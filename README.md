@@ -4,6 +4,7 @@ This repository hosts analysis done on the most recent ACS 5-yr sample data expl
 # Background 
 The motivation for this analysis is a Strada Education Foundation ("Strada") report from February 2024 (the "Strada Report") about the prevalence of **underemployment** in the college-educated population. The Strada Report specifically claism that **52 percent** of graduates are underemployed a year after graduation" and "a decade after graduation, **45 percent** of graduates are underemployed" (Strada Report, p. 6). The Strada Report notes that these rates "vary greatly by college major" (Strada Report, p. 6).
 
+[!NOTE]
 Important notes from the Strada Report's underemployment classification:
 - Employees were classified as underemployed if "less than half of workers either had, or were required to have, a bachelor's degree" (Strada Report, pp. 50-51).
 - The Strada Report's methodology "yielded the same occupational classification as the method used by the BLS" Employment Projections (EP) to classify the "typical education needed for entry" into an occupation (Strada Report, p. 50).[^1]
