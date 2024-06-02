@@ -17,6 +17,7 @@ Since I do not have access to the Strada Report's full classification methodolog
 # Methodology
 I begin by downloading a cut of the 2022 ACS 5-year sample data (see the "_documentation" subfolder of the repo for more information on variables/observations used). I filtered the data to include only non-student, employed, full-time, year-round, non-military workers.[^3]
 [^3]: The exact filtering steps are outlined in the "output/ACS_filtering.txt" document in the repository.
+
 In order to merge the ACS data with the BLS educational requirements from the BLS EP data, I use the BLS-recommended crosswalk. However, as noted by BLS EP Table 5.3, the SOC codes used by the BLS are "not an exact match with ACS,” so the occupations need to be reconciled. The Crosswalk has 832 distinct SOC codes mapped to 525 ACS occupation codes. Thus, there is some duplication of codes in the Crosswalk: **145 ACS occupation codes correspond to multiple SOC codes** (there are 3 SOC codes that map to multiple ACS occupation codes).
 
 To merge the Crosswalk to the ACS Data, I need to assign every ACS occupation code to a unique SOC code. To determine how to assign the ACS occupation codes with multiple corresponding SOC codes, I used the SOC code with the highest level of employment according to the BLS Occupational Employment Wage Statistics ("OEWS") data on employment by SOC code.[^2]
