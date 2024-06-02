@@ -8,7 +8,7 @@ The motivation for this analysis is a Strada Education Foundation ("Strada") rep
 >Important notes from the Strada Report's underemployment classification:
 >- Employees were classified as underemployed if "less than half of workers either had, or were required to have, a bachelor's degree" (Strada Report, pp. 50-51).
 >- The Strada Report's methodology "yielded the same occupational classification as the method used by the BLS" Employment Projections (EP) to classify the "typical education needed for entry" into an occupation (Strada Report, p. 50).[^1]
-[^1]: The Strada Report combines (1) EP Table 5.3 "Educational attainment for workers 25 years and older by detailed occupation," (2) EP Table 5.4 "Education and training assignments by detailed occupation," and (3) "job postings data showing what kind of education >requirements employers were seeking for that occupation."
+>[^1]: The Strada Report combines (1) EP Table 5.3 "Educational attainment for workers 25 years and older by detailed occupation," (2) EP Table 5.4 "Education and training assignments by detailed occupation," and (3) "job postings data showing what kind of education >requirements employers were seeking for that occupation."
 >- The Strada Report tries to avoid what it calls "incumbent worker bias, where workers who have been employed for longer time periods, or who gain regular on-the-job training can skew survey results" (Strada Report, p. 51). Strada is interested in recent (i.e., within 10-years of graduation) graduates.
 >- When looking at wages within a given occupation, the STrada Report considers "workers with a terminal bachelor's degree aged 22-27, employed full-time, year-round, and not enrolled in school" (Strada Report, p. 14).
 
