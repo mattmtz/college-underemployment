@@ -119,7 +119,7 @@ order age_cat bls_occ_title occ_soc educ_req_nbr educ_req cln_educ_cat ///
  med_wage md* avg* 
 gsort age_cat educ_req_nbr bls_occ_title
 
-save "../intermediate/data_by_occ", replace
+save "../intermediate/data_by_educ_req", replace
 
 export excel using "output/summary_tables.xlsx", ///
  first(var) sheet("data_by_req", replace)
