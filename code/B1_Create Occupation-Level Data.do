@@ -192,6 +192,8 @@ replace age_cat = "all_workers" if age_cat == "all"
 order bls_occ occ_soc educ_req educ_req_n age_cat cln_educ_cat n med_wage
 gsort age_cat cln_educ_cat educ_req_nbr occ_soc
 
+save "../intermediate/data_by_occ", replace
+
 export excel using "output/summary_tables.xlsx", ///
  first(var) sheet("data_by_occ", replace)
  
