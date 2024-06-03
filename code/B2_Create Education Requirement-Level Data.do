@@ -5,18 +5,7 @@
 *** DATE:    05/20/2024
 ********************************/
 
-*************
-*** SETUP ***
-*************
-clear
-capture log close
-set more off
-
-** SET WORKING DIRECTORY **
-cd "C:\Users\mattm\Dropbox\GWU\03_Summer Work\Research Analyst\"
-cd "Georgetown\Underemployment Project"
-
-use "C:\Users\mattm\OneDrive\Desktop\IPUMS Data\underemployment_data", clear
+use "../intermediate/underemployment_data", clear
 
 ** CREATE AGGREGATE EDUCATION GROUPS **
 gen agg_educ_lvl = 0 if cln_educ_cat_nbr < educ_req_nbr

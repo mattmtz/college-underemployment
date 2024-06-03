@@ -1,12 +1,11 @@
 /********************************
 *** NAME:    MATT MARTINEZ
 *** PROJECT: UNDEREMPLOYMENT
-*** PURPOSE: GET EMPLOYEE COUNTS
+*** PURPOSE: GET COUNTS/EARNINGS
 *** DATE:    05/22/2024
 ********************************/
 
-
-use "..intermediate/underemployment_data", clear
+use "../intermediate/underemployment_data", clear
 
 label drop year_lbl
 ** CREATE COUNTING VARIABLE **
