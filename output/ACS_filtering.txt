@@ -1,0 +1,154 @@
+--------------------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  C:\Users\mattm\OneDrive\Desktop\Underemployment\college-underemployment\output/
+> ACS_filtering.txt
+  log type:  text
+ opened on:   2 Jun 2024, 19:00:55
+r; t=0.01 19:00:55
+
+. ** KEEP NOT-IN-SCHOOL RECORDS **
+. label list school_lbl
+school_lbl:
+           0 N/A
+           1 No, not in school
+           2 Yes, in school
+           8 Unknown
+           9 Missing
+r; t=0.01 19:00:55
+
+. tab school
+
+School attendance |      Freq.     Percent        Cum.
+------------------+-----------------------------------
+              N/A |    437,349        2.78        2.78
+No, not in school | 11,759,612       74.80       77.58
+   Yes, in school |  3,524,162       22.42      100.00
+------------------+-----------------------------------
+            Total | 15,721,123      100.00
+r; t=1.44 19:00:57
+
+. keep if school == 1
+(3,961,511 observations deleted)
+r; t=1.01 19:00:58
+
+. 
+. ** KEEP EMPLOYED **
+. label list empstat_lbl
+empstat_lbl:
+           0 N/A
+           1 Employed
+           2 Unemployed
+           3 Not in labor force
+           9 Unknown/Illegible
+r; t=0.00 19:00:58
+
+. tab empstat
+
+ Employment status |
+ [general version] |      Freq.     Percent        Cum.
+-------------------+-----------------------------------
+               N/A |    239,045        2.03        2.03
+          Employed |  6,568,484       55.86       57.89
+        Unemployed |    305,736        2.60       60.49
+Not in labor force |  4,646,347       39.51      100.00
+-------------------+-----------------------------------
+             Total | 11,759,612      100.00
+r; t=0.34 19:00:58
+
+. keep if empstat == 1
+(5,191,128 observations deleted)
+r; t=0.53 19:00:59
+
+. 
+. ** KEEP FULL-YR WORKERS **
+. label list wkswork2_lbl
+wkswork2_lbl:
+           0 N/A
+           1 1-13 weeks
+           2 14-26 weeks
+           3 27-39 weeks
+           4 40-47 weeks
+           5 48-49 weeks
+           6 50-52 weeks
+r; t=0.00 19:00:59
+
+. tab wkswork2
+
+      Weeks |
+worked last |
+      year, |
+intervalled |      Freq.     Percent        Cum.
+------------+-----------------------------------
+ 1-13 weeks |    208,165        3.17        3.17
+14-26 weeks |    169,709        2.58        5.75
+27-39 weeks |    200,278        3.05        8.80
+40-47 weeks |    284,170        4.33       13.13
+48-49 weeks |    102,450        1.56       14.69
+50-52 weeks |  5,603,712       85.31      100.00
+------------+-----------------------------------
+      Total |  6,568,484      100.00
+r; t=0.18 19:00:59
+
+. keep if wkswork2 == 6
+(964,772 observations deleted)
+r; t=0.26 19:00:59
+
+. 
+. ** KEEP FT WORKERS **
+. sum uhrs, d
+
+                 Usual hours worked per week
+-------------------------------------------------------------
+      Percentiles      Smallest
+ 1%            8              1
+ 5%           20              1
+10%           30              1       Obs           5,603,712
+25%           40              1       Sum of Wgt.   5,603,712
+
+50%           40                      Mean           41.27043
+                        Largest       Std. Dev.      10.88623
+75%           45             99
+90%           50             99       Variance         118.51
+95%           60             99       Skewness        .317864
+99%           80             99       Kurtosis       7.151526
+r; t=3.80 19:01:03
+
+. keep if uhrs >=35
+(729,227 observations deleted)
+r; t=0.23 19:01:03
+
+. 
+. ** DROP MILITARY **
+. tab occ2010 if inlist(occsoc, "551010", "552010", "553010", "559830")
+
+                 Occupation, 2010 basis |      Freq.     Percent        Cum.
+----------------------------------------+-----------------------------------
+Military Officer Special and Tactical O |      2,329       10.35       10.35
+First-Line Enlisted Military Supervisor |      2,173        9.66       20.01
+Military Enlisted Tactical Operations a |      7,307       32.48       52.48
+           Military, Rank Not Specified |     10,691       47.52      100.00
+----------------------------------------+-----------------------------------
+                                  Total |     22,500      100.00
+r; t=0.67 19:01:04
+
+. drop if inlist(occsoc, "551010", "552010", "553010", "559830")
+(22,500 observations deleted)
+r; t=0.75 19:01:05
+
+. 
+. ** DROP NO WAGE INCOME OBS **
+. count if incwage <= 0
+  207,160
+r; t=0.10 19:01:05
+
+. drop if incwage <= 0
+(207,160 observations deleted)
+r; t=0.20 19:01:05
+
+. log close
+      name:  <unnamed>
+       log:  C:\Users\mattm\OneDrive\Desktop\Underemployment\college-underemployment\output/
+> ACS_filtering.txt
+  log type:  text
+ closed on:   2 Jun 2024, 19:01:05
+--------------------------------------------------------------------------------------------
