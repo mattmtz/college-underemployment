@@ -48,7 +48,7 @@ unique occ_acs if dup_acs == 1
 preserve
 	keep if dup_acs > 0
 	gsort occ_soc
-	*export delimited "output/xwalk_acs_duplicates.csv", replace
+	export delimited "output/xwalk_acs_duplicates.csv", replace
 restore
 
 ** ASSIGN HIGHEST EMPLOYMENT SOC CODE TO DUPLICATES **
@@ -80,5 +80,11 @@ assert _merge!=1
 keep if _merge ==3
 drop _merge
 
+** CREATE EDUCATION GROUPS BY REQUIREMENT **
+gen agg_educ_lvl = "undereduc" if cln_educ_cat_nbr < educ_req_nbr
+	replace agg_educ_lvl = "bls_educ" if cln_educ_cat_nbr == educ_req_nbr
+	replace agg_educ_lvl = "overeduc" if cln_educ_cat_nbr > educ_req_nbr
+
 ** EXPORT DATA **
+label drop year_lbl
 save "../intermediate/underemployment_data", replace

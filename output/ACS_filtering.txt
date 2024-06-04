@@ -3,8 +3,8 @@
        log:  C:\Users\mattm\OneDrive\Desktop\Underemployment\college-underemployment\output/
 > ACS_filtering.txt
   log type:  text
- opened on:   2 Jun 2024, 19:00:55
-r; t=0.01 19:00:55
+ opened on:   4 Jun 2024, 12:17:54
+r; t=0.00 12:17:54
 
 . ** KEEP NOT-IN-SCHOOL RECORDS **
 . label list school_lbl
@@ -14,7 +14,7 @@ school_lbl:
            2 Yes, in school
            8 Unknown
            9 Missing
-r; t=0.01 19:00:55
+r; t=0.00 12:17:54
 
 . tab school
 
@@ -25,11 +25,11 @@ No, not in school | 11,759,612       74.80       77.58
    Yes, in school |  3,524,162       22.42      100.00
 ------------------+-----------------------------------
             Total | 15,721,123      100.00
-r; t=1.44 19:00:57
+r; t=0.41 12:17:55
 
 . keep if school == 1
 (3,961,511 observations deleted)
-r; t=1.01 19:00:58
+r; t=0.72 12:17:55
 
 . 
 . ** KEEP EMPLOYED **
@@ -40,7 +40,7 @@ empstat_lbl:
            2 Unemployed
            3 Not in labor force
            9 Unknown/Illegible
-r; t=0.00 19:00:58
+r; t=0.00 12:17:55
 
 . tab empstat
 
@@ -53,11 +53,11 @@ r; t=0.00 19:00:58
 Not in labor force |  4,646,347       39.51      100.00
 -------------------+-----------------------------------
              Total | 11,759,612      100.00
-r; t=0.34 19:00:58
+r; t=0.35 12:17:56
 
 . keep if empstat == 1
 (5,191,128 observations deleted)
-r; t=0.53 19:00:59
+r; t=0.55 12:17:56
 
 . 
 . ** KEEP FULL-YR WORKERS **
@@ -70,7 +70,7 @@ wkswork2_lbl:
            4 40-47 weeks
            5 48-49 weeks
            6 50-52 weeks
-r; t=0.00 19:00:59
+r; t=0.00 12:17:56
 
 . tab wkswork2
 
@@ -87,11 +87,11 @@ intervalled |      Freq.     Percent        Cum.
 50-52 weeks |  5,603,712       85.31      100.00
 ------------+-----------------------------------
       Total |  6,568,484      100.00
-r; t=0.18 19:00:59
+r; t=0.17 12:17:56
 
 . keep if wkswork2 == 6
 (964,772 observations deleted)
-r; t=0.26 19:00:59
+r; t=0.28 12:17:57
 
 . 
 . ** KEEP FT WORKERS **
@@ -111,11 +111,11 @@ r; t=0.26 19:00:59
 90%           50             99       Variance         118.51
 95%           60             99       Skewness        .317864
 99%           80             99       Kurtosis       7.151526
-r; t=3.80 19:01:03
+r; t=3.42 12:18:00
 
 . keep if uhrs >=35
 (729,227 observations deleted)
-r; t=0.23 19:01:03
+r; t=0.22 12:18:00
 
 . 
 . ** DROP MILITARY **
@@ -129,26 +129,26 @@ Military Enlisted Tactical Operations a |      7,307       32.48       52.48
            Military, Rank Not Specified |     10,691       47.52      100.00
 ----------------------------------------+-----------------------------------
                                   Total |     22,500      100.00
-r; t=0.67 19:01:04
+r; t=0.63 12:18:01
 
 . drop if inlist(occsoc, "551010", "552010", "553010", "559830")
 (22,500 observations deleted)
-r; t=0.75 19:01:05
+r; t=0.69 12:18:02
 
 . 
 . ** DROP NO WAGE INCOME OBS **
 . count if incwage <= 0
   207,160
-r; t=0.10 19:01:05
+r; t=0.11 12:18:02
 
 . drop if incwage <= 0
 (207,160 observations deleted)
-r; t=0.20 19:01:05
+r; t=0.19 12:18:02
 
 . log close
       name:  <unnamed>
        log:  C:\Users\mattm\OneDrive\Desktop\Underemployment\college-underemployment\output/
 > ACS_filtering.txt
   log type:  text
- closed on:   2 Jun 2024, 19:01:05
+ closed on:   4 Jun 2024, 12:18:02
 --------------------------------------------------------------------------------------------

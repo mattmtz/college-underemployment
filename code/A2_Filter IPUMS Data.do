@@ -69,7 +69,7 @@ rename (occ occsoc) (occ_acs occ_soc_ipums)
 ** CREATE AGE CATEGORIES **
 gen agedum_all = 1
 gen agedum_22_27 = (age>21 & age <28)
-gen agedum_25_55 = (age>24 & age <56) 
+gen agedum_25_54 = (age>24 & age <54) 
 gen agedum_25_34 = (age>24 & age <35)
 gen agedum_35_44 = (age>34 & age<45)
 gen agedum_45_54 = (age>44 & age<55)

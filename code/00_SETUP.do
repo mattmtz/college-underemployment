@@ -7,7 +7,7 @@
 
 clear
 capture log close
-set more off
+set more off, perm
 set rmsg on
 *ssc install unique
 
