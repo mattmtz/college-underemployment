@@ -11,9 +11,15 @@ set more off
 set rmsg on
 *ssc install unique
 
+** SET KEY CUTOFFS **
+global NFLAG 75 // minimum number of observations to consider median wages
+global OVEREDUC_PREMIUM 0.2 // cutoff for acceptable premium of overeducation
+global BA_PREMIUM 0.15 // cutoff for BA wage premium over HS wage
+
 ** SET WORKING DIRECTORY GLOBAL **
 global CD "C:\Users\mattm\OneDrive\Desktop\Underemployment\college-underemployment"
 cd "$CD"
+
 ** SET IPUMS DATA DOWNLOAD NAME **
 global IPUMS "usa_00004.dat"
 
