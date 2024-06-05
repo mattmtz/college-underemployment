@@ -17,7 +17,7 @@ global OVEREDUC_PREMIUM 0.2 // cutoff for acceptable premium of overeducation
 global BA_PREMIUM 0.15 // cutoff for BA wage premium over HS wage
 
 ** SET WORKING DIRECTORY GLOBAL **
-global CD "C:\Users\mattm\OneDrive\Desktop\Underemployment\college-underemployment"
+global CD "C:\Users\mattm\Desktop\Underemployment\college-underemployment"
 cd "$CD"
 
 ** SET IPUMS DATA DOWNLOAD NAME **
