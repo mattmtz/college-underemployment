@@ -12,6 +12,7 @@ cd "$CD"
 *******************
 
 log using "output/ACS_filtering.txt", text replace
+
 ** KEEP NOT-IN-SCHOOL RECORDS **
 label list school_lbl
 tab school
@@ -38,6 +39,9 @@ drop if inlist(occsoc, "551010", "552010", "553010", "559830")
 ** DROP NO WAGE INCOME OBS **
 count if incwage <= 0
 drop if incwage <= 0
+
+** KEEP AGES 22-64 **
+keep if age >= $MINAGE & age <= $MAXAGE
 log close
 
 **************************
