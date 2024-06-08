@@ -37,3 +37,4 @@ do "code/B1_Occupation Counts by Educ Category.do"
 do "code/B2_Occupation Earnings by Educ Category.do"
 do "code/B3_Create Educ Req Intermediate Data.do"
 
+** TYPICAL RUNTIME: ~22 minutes
