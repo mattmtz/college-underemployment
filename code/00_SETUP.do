@@ -15,8 +15,8 @@ set rmsg on
 global MINAGE 22
 global MAXAGE 64
 global NFLAG 75 // minimum number of observations to consider median wages
-global OVEREDUC_PREMIUM 0.2 // cutoff for acceptable premium of overeducation
-global BA_PREMIUM 0.15 // cutoff for BA wage premium over HS wage
+global OVEREDUC_PREMIUM 1.2 // cutoff for acceptable premium of overeducation
+global BA_PREMIUM 1.15 // cutoff for BA wage premium over HS wage
 
 ** SET WORKING DIRECTORY GLOBAL **
 global CD "C:\Users\mattm\Desktop\Underemployment\college-underemployment"
