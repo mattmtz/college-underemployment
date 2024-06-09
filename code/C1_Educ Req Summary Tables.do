@@ -1,8 +1,8 @@
 /********************************
 *** NAME:    MATT MARTINEZ
 *** PROJECT: UNDEREMPLOYMENT
-*** PURPOSE: CREATE OCC COUNTS TABLE
-*** DATE:    05/20/2024
+*** PURPOSE: CREATE SUMMARY TABLES
+*** DATE:    06/10/2024
 ********************************/
 
 ***********************************
@@ -79,3 +79,6 @@ collapse (sum) tot suff_* (mean) avg_BA_plus_share = BA_plus_sh med_mwage_*, ///
 order age_cat educ_re* tot suff_* avg_BA_plus_sh med_mwage_*
 gsort age_cat educ_req_nbr
 	drop educ_req_nbr
+	
+export excel using "output/summary_tables.xlsx", ///
+ first(var) sheet("BA_plus_overview", replace)

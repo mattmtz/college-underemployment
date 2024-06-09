@@ -7,6 +7,7 @@
 
 clear
 capture log close
+macro drop _all
 set more off, perm
 set rmsg on
 *ssc install unique
@@ -16,7 +17,12 @@ global MINAGE 22
 global MAXAGE 64
 global NFLAG 75 // minimum number of observations to consider median wages
 global OVEREDUC_PREMIUM 1.2 // cutoff for acceptable premium of overeducation
-global BA_PREMIUM 1.15 // cutoff for BA wage premium over HS wage
+global AA_PREM1 1.1 // cutoff for AA wage premium over HS wage
+global BA_PREM1 1.2 // cutoff for BA wage premium over HS wage
+global BA_PREM2 1.1 // cutoff for BA wage premium over AA wage
+global MA_PREM1 1.3 // cutoff for MA wage premium over HS wage
+global MA_PREM2 1.2 // cutoff for MA wage premium over AA wage
+global MA_PREM3 1.3 // cutoff for MA wage premium over BA wage
 
 ** SET WORKING DIRECTORY GLOBAL **
 global CD "C:\Users\mattm\Desktop\Underemployment\college-underemployment"
