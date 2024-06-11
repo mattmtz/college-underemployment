@@ -144,7 +144,8 @@ use `OVERVIEW', clear
 ** EXPORT DATA **
 gsort age_cat educ_req_nbr bls
 order age_cat educ* bls occ suff_* n_* premium* mwage*
-
+	drop educ_req_nbr
+	
 save "../intermediate/premium_data", replace
 
 export excel using "output/summary_tables.xlsx", ///
