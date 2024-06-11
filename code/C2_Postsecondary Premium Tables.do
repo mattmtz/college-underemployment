@@ -54,7 +54,6 @@ gen ovl_prem_ma_ba = (mwage_ma > $MA_PREM3 * mwage_ba)
 tempfile OVERVIEW
 save `OVERVIEW'
 
-save "../intermediate/premium_flags", replace
 ************************************
 *** FIND OCCUPATIONS WITH PREMIA ***
 ************************************
