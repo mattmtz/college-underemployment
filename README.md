@@ -2,7 +2,7 @@
 This repository hosts analysis done on the most recent ACS 5-yr sample data exploring the education levels and wages of workers in BLS-defined occupations. Incorporated into this analysis is the BLS definition of the "typical" education level required for entry into these occupations, using data from the [BLS Employment Projections](https://www.bls.gov/emp/tables.htm) ("EP") tables. 
 
 # Background 
-The motivation for this analysis is a Strada Education Foundation ("Strada") report from February 2024 (the "[Strada Report](https://stradaeducation.org/wp-content/uploads/2024/02/Talent-Disrupted.pdf)") about the prevalence of **underemployment** in the college-educated population. The Strada Report specifically claism that **52 percent** of graduates are underemployed a year after graduation" and "a decade after graduation, **45 percent** of graduates are underemployed" (Strada Report, p. 6). The Strada Report notes that these rates "vary greatly by college major" (Strada Report, p. 6).
+The motivation for this analysis is a Strada Education Foundation ("Strada") report from February 2024 (the "[Strada Report](https://stradaeducation.org/wp-content/uploads/2024/02/Talent-Disrupted.pdf)") about the prevalence of **underemployment** in the college-educated population. The Strada Report specifically claims that **52 percent** of graduates are underemployed a year after graduation" and "a decade after graduation, **45 percent** of graduates are underemployed" (Strada Report, p. 6). The Strada Report notes that these rates "vary greatly by college major" (Strada Report, p. 6).
 
 >[!NOTE]
 >Important notes from the Strada Report's underemployment classification:
