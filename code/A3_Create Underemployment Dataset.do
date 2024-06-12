@@ -8,6 +8,32 @@
 clear
 capture log close
 
+*********************************************
+*** CLEAN BLS EDUCATION REQUIREMENTS DATA ***
+*********************************************
+
+** IMPORT & CLEAN DATA **
+import excel using "input/education.xlsx", sheet("Table 5.4") ///
+ cellra(A2) first case(lower) clear
+
+drop if mi(b)
+keep b typicaleduc
+rename (b t) (occ_soc educ_req)
+
+** ASSIGN ORDINAL RANKING TO EDUCATIONAL REQUIREMENTS **
+gen educ_req_nbr = 1
+	replace educ_req_nbr = 2 if strpos(educ_req, "High school")
+	replace educ_req_nbr = 3 if strpos(educ_req, "Some college")
+	replace educ_req_nbr = 3.5 if strpos(educ_req, "Postsecondary")
+	replace educ_req_nbr = 4 if strpos(educ_req, "Associate")
+	replace educ_req_nbr = 5 if strpos(educ_req, "Bachelor")
+	replace educ_req_nbr = 6 if strpos(educ_req, "Master")
+	replace educ_req_nbr = 7 if strpos(educ_req, "Doctoral")
+
+** SAVE DATA **
+tempfile BLS_REQ
+save `BLS_REQ'
+
 ******************************
 *** EMPLOYMENT BY SOC CODE ***
 ******************************
@@ -59,7 +85,6 @@ drop if tot_emp != max_emp
 drop dup_acs max_emp
 
 ** SAVE CLEANED CROSSWALK **
-*save "../intermediate/cleaned_bls_acs_xwalk", replace
 tempfile XWALK
 save `XWALK'
 
@@ -75,7 +100,7 @@ assert _merge == 3
 drop _merge
 
 ** MERGE IN BLS EP TABLE 5.4 **
-merge m:1 occ_soc using "../intermediate/bls_educ_requirements"
+merge m:1 occ_soc using `BLS_REQ'
 assert _merge!=1
 keep if _merge ==3
 drop _merge
