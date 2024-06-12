@@ -31,9 +31,9 @@ gen overeduc_share = n_overeduc/(n_overeduc + n_bls + n_undereduc) if maj == 1
 	 
 ** CALCULATE OVEREDUCATION PREMIA **
 gen overeduc_prem_med = (mwage_overeduc > $OVEREDUC_PREMIUM * mwage_bls_educ)
-	replace overeduc_prem_med = 0 if suff_overeduc == 0
+	replace overeduc_prem_med = 0 if suff_both == 0
 gen overeduc_prem_avg = (awage_overeduc > $OVEREDUC_PREMIUM * awage_bls_educ)
-	replace overeduc_prem_avg = 0 if suff_overeduc == 0
+	replace overeduc_prem_avg = 0 if suff_both == 0
 		
 ** COLLAPSE DATA **
 collapse (sum) tot suff_* maj_ov overeduc_p* ///

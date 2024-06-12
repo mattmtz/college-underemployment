@@ -22,7 +22,7 @@ global BA_PREM1 1.2 // cutoff for BA wage premium over HS wage
 global BA_PREM2 1.1 // cutoff for BA wage premium over AA wage
 global MA_PREM1 1.3 // cutoff for MA wage premium over HS wage
 global MA_PREM2 1.2 // cutoff for MA wage premium over AA wage
-global MA_PREM3 1.3 // cutoff for MA wage premium over BA wage
+global MA_PREM3 1.1 // cutoff for MA wage premium over BA wage
 
 ** SET WORKING DIRECTORY GLOBAL **
 global CD "C:\Users\mattm\Desktop\Underemployment\college-underemployment"

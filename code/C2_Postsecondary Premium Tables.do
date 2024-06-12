@@ -50,6 +50,15 @@ gen ovl_prem_ma_ba = (mwage_ma > $MA_PREM3 * mwage_ba)
 	replace ovl_prem_ma_ba = . if mi(mwage_ma) | mi(mwage_ba)
 	gen suff_ma_ba = (!mi(ovl_prem_ma_ba))
 
+	
+** WAGE DIFFERENTIALS **
+gen pct_incr_aa_hs = mwage_as / mwage_hs - 1 if educ_req_nbr == 2
+gen pct_incr_ba_hs = mwage_ba / mwage_hs - 1 if educ_req_nbr == 2
+gen pct_incr_ma_hs = mwage_ma / mwage_hs - 1 if educ_req_nbr == 2
+gen pct_incr_ba_aa = mwage_ba / mwage_as - 1 if educ_req_nbr == 4
+gen pct_incr_ma_aa = mwage_ma / mwage_as - 1 if educ_req_nbr == 4
+gen pct_incr_ma_ba = mwage_ma / mwage_ba - 1 if educ_req_nbr == 5
+
 ** SAVE DATA **
 tempfile OVERVIEW
 save `OVERVIEW'
@@ -63,7 +72,7 @@ use "../intermediate/underemployment_data", clear
 	 inlist(cln_educ_cat, "associates", "bachelors", "masters")
 
 ** PREPARE DATA **
-keep bls_occ cln_educ_cat educ_re* agedum* incwage perwt
+keep bls_occ cln_educ_cat educ_re* agedum* incwage perwt multyear
 unab AGEDUMS: agedum_*
 di "`AGEDUMS'"
 
@@ -106,7 +115,9 @@ preserve
 	
 	* Collapse data
 	collapse (sum) premium_ = premium [pw = perwt], ///
-	 by(age_cat bls_occ cln_educ_cat educ_re*)
+	 by(age_cat bls_occ cln_educ_cat educ_re* multyear)
+	
+	collapse (mean) premium_, by(age_cat bls_occ cln_educ_cat educ_re*)
 	 
 	* Reshape wide
 	reshape wide premium_, i(bls age_cat educ_re*) j(cln_educ_cat) string
@@ -119,8 +130,6 @@ preserve
 	save `PREM_`var''
 restore
 }
-
-macro list
 
 ****************************
 *** CREATE FINAL DATASET ***
@@ -143,7 +152,7 @@ use `OVERVIEW', clear
 
 ** EXPORT DATA **
 gsort age_cat educ_req_nbr bls
-order age_cat educ* bls occ suff_* n_* premium* mwage*
+order age_cat educ* bls occ suff_* n_* ovl_* premium* mwage* pct_incr*
 	drop educ_req_nbr
 	
 save "../intermediate/premium_data", replace
