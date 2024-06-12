@@ -8,7 +8,7 @@
 ***********************************
 *** BLS EDUC VS. OVEREDUC TABLE ***
 ***********************************
-use "../intermediate/data_by_educ_req", clear
+use "../intermediate/data_by_occ_wide", clear
 	keep age bls occ educ* tot *_undereduc *_bls_educ *_overeduc
 	
 ** CREATE KEY INDICATORS
@@ -56,7 +56,7 @@ export excel using "output/summary_tables.xlsx", ///
 *** BA+ TABLE ***
 *****************
 
-use "../intermediate/data_by_educ_req", clear
+use "../intermediate/data_by_occ_wide", clear
 	keep age bls occ educ* tot *_BA_plus *_less_BA
 
 gen suff_both = (suff_less_BA + suff_BA_plus == 2)
