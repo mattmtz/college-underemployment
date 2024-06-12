@@ -27,7 +27,7 @@ To merge the Crosswalk to the ACS Data, I need to assign every ACS occupation co
 Once I assigned each ACS occupation code to a unique SOC code, I merged the filtered ACS data and the Crosswalk. I then merged in the BLS Education Requirements to create the final dataset.
 
 # Analysis
-*To fill in after analysis is finalized*
+*To fill in after analysis is finalized*.
 
 # Replication
 In order to work with these files, create two local subfolders in the same folder as the "college-underemployment" repository folder: (1) a subfolder titled "IPUMS Data", and (2) a subfolder titled "intermediate". The "IPUMS Data" subfolder should contain an unzipped .dat file with the variables/observations defined in the "_documentation" subfolder of the repository. In the "code" subfolder, file "00_SETUP.do", change the name of the global variable "IPUMS" to match the name of the current .dat file.
