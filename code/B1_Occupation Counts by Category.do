@@ -23,13 +23,10 @@ foreach var of varlist `AGEDUMS' {
 ** ALL WORKERS **
 preserve 
 	keep if `var' == 1
-	* Annual counts
-	collapse (sum) n [pw = perwt], ///
-	 by(bls_occ_title occ_soc educ_re* multyear)
-	 
-	* 5-year avg. counts
-	collapse (mean) n, by(bls_occ_title occ_soc educ_re*)
-	
+
+	collapse (sum) n_raw = n n_wtd = perwt, ///
+	 by(bls_occ_title occ_soc educ_re*)
+
 	gen cln_educ_cat = "all_workers"
 	gen age_cat = "`var'"
 	tempfile T_`var'
@@ -39,13 +36,10 @@ restore
 ** BY DETAILED EDUCATION **
 preserve 
 	keep if `var' == 1
-	* Annual counts
-	collapse (sum) n [pw = perwt], ///
-	 by(bls_occ_title occ_soc educ_re* cln_educ_cat multyear)
-	 
-	* 5-year avg. counts
-	collapse (mean) n, by(bls_occ_title occ_soc educ_re* cln_educ_cat)
 	
+	collapse (sum) n_raw = n n_wtd = perwt, ///
+	 by(bls_occ_title occ_soc educ_re* cln_educ_cat)
+
 	gen age_cat = "`var'"
 	tempfile D_`var'
 	save `D_`var''
@@ -55,12 +49,9 @@ restore
 preserve 
 	keep if `var' == 1
 	* Annual counts
-	collapse (sum) n [pw = perwt], ///
-	 by(bls_occ_title occ_soc educ_re* postsec_deg multyear)
+	collapse (sum) n_raw = n n_wtd = perwt, ///
+	 by(bls_occ_title occ_soc educ_re* postsec_deg)
 	 
-	* 5-year avg. counts
-	collapse (mean) n, by(bls_occ_title occ_soc educ_re* postsec_deg)
-		
 	gen cln_educ_cat = "BA+" if postsec == 1
 	replace cln_educ_cat = "less_BA" if postsec==0
 		drop postsec
@@ -77,12 +68,9 @@ preserve
 	drop if inlist(educ_req_nbr, 3.5, 7)
 	
 	* Annual counts
-	collapse (sum) n [pw = perwt], ///
-	 by(bls_occ_title occ_soc educ_re* agg_educ multyear)
-	 
-	* 5-year avg. counts
-	collapse (mean) n, by(bls_occ_title occ_soc educ_re* agg_educ)
-		
+	collapse (sum) n_raw = n n_wtd = perwt, ///
+	 by(bls_occ_title occ_soc educ_re* agg_educ)
+
 	rename agg_educ cln_educ_cat
 	
 	gen age_cat = "`var'"
@@ -101,10 +89,7 @@ foreach var of varlist `AGEDUMS' {
 preserve 
 	keep if `var' == 1
 	* Annual counts
-	collapse (sum) n [pw = perwt], by(multyear year)
-	 
-	* 5-year avg. counts
-	collapse (mean) n, by(year)
+	collapse (sum) n_raw = n n_wtd = perwt, by(year)
 	
 	gen cln_educ_cat = "all_workers"
 	gen age_cat = "`var'"
@@ -118,11 +103,8 @@ restore
 preserve
 	keep if `var' == 1
 	* Annual counts
-	collapse (sum) n [pw = perwt], by(multyear cln_educ_cat)
-	
-	* 5-yr avg. counts
-	collapse (mean) n, by(cln_educ_cat)
-	
+	collapse (sum) n_raw = n n_wtd = perwt, by(cln_educ_cat)
+
 	gen age_cat = "`var'"
 	tempfile D2_`var'
 	save `D2_`var''
@@ -132,11 +114,8 @@ restore
 preserve
 	keep if `var' == 1
 	* Annual counts
-	collapse (sum) n [pw = perwt], by(multyear postsec_deg)
-	
-	* 5-yr avg. counts
-	collapse (mean) n, by(postsec_deg)
-	
+	collapse (sum) n_raw = n n_wtd = perwt, by(postsec_deg)
+
 	gen cln_educ_cat = "BA+" if postsec == 1
 	replace cln_educ_cat = "less_BA" if postsec==0
 		drop postsec
@@ -173,10 +152,10 @@ replace age_cat = subinstr(age_cat, "_", "-", .)
 replace age_cat = "all_workers" if age_cat == "all"
 
 ** CREATE FLAG FOR TOO FEW OBSERVATIONS **
-gen low_n_flag = (n < $NFLAG ) 
+gen suff_flag = (n_raw >= $NFLAG ) 
 
 ** SAVE DATA **
-order bls_occ occ_soc educ_req educ_req_n age_cat cln_educ_cat n low_n_flag
+order bls_occ occ_soc educ_req educ_req_n age_cat cln_educ_cat n_w n_r suff_flag
 gsort age_cat cln_educ_cat educ_req_nbr occ_soc
 
 save "../intermediate/counts_by_occ", replace

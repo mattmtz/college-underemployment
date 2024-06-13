@@ -1,10 +1,10 @@
---------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  C:\Users\mattm\Desktop\Underemployment\college-underemployment\output/ACS_filte
-> ring.txt
+       log:  C:\Users\mattm\Desktop\Underemployment\college-underemployment\output/ACS_f
+> iltering.txt
   log type:  text
- opened on:   6 Jun 2024, 17:26:48
-r; t=0.00 17:26:48
+ opened on:  13 Jun 2024, 09:13:38
+r; t=0.00 9:13:38
 
 . 
 . ** KEEP NOT-IN-SCHOOL RECORDS **
@@ -15,7 +15,7 @@ school_lbl:
            2 Yes, in school
            8 Unknown
            9 Missing
-r; t=0.00 17:26:48
+r; t=0.00 9:13:38
 
 . tab school
 
@@ -26,11 +26,11 @@ No, not in school | 11,759,612       74.80       77.58
    Yes, in school |  3,524,162       22.42      100.00
 ------------------+-----------------------------------
             Total | 15,721,123      100.00
-r; t=0.42 17:26:49
+r; t=0.50 9:13:38
 
 . keep if school == 1
 (3,961,511 observations deleted)
-r; t=0.68 17:26:49
+r; t=0.75 9:13:39
 
 . 
 . ** KEEP EMPLOYED **
@@ -41,7 +41,7 @@ empstat_lbl:
            2 Unemployed
            3 Not in labor force
            9 Unknown/Illegible
-r; t=0.00 17:26:49
+r; t=0.00 9:13:39
 
 . tab empstat
 
@@ -54,11 +54,11 @@ r; t=0.00 17:26:49
 Not in labor force |  4,646,347       39.51      100.00
 -------------------+-----------------------------------
              Total | 11,759,612      100.00
-r; t=0.38 17:26:50
+r; t=0.36 9:13:39
 
 . keep if empstat == 1
 (5,191,128 observations deleted)
-r; t=0.53 17:26:50
+r; t=0.54 9:13:40
 
 . 
 . ** KEEP FULL-YR WORKERS **
@@ -71,7 +71,7 @@ wkswork2_lbl:
            4 40-47 weeks
            5 48-49 weeks
            6 50-52 weeks
-r; t=0.00 17:26:50
+r; t=0.00 9:13:40
 
 . tab wkswork2
 
@@ -88,11 +88,11 @@ intervalled |      Freq.     Percent        Cum.
 50-52 weeks |  5,603,712       85.31      100.00
 ------------+-----------------------------------
       Total |  6,568,484      100.00
-r; t=0.20 17:26:50
+r; t=0.19 9:13:40
 
 . keep if wkswork2 == 6
 (964,772 observations deleted)
-r; t=0.28 17:26:51
+r; t=0.27 9:13:40
 
 . 
 . ** KEEP FT WORKERS **
@@ -112,11 +112,11 @@ r; t=0.28 17:26:51
 90%           50             99       Variance         118.51
 95%           60             99       Skewness        .317864
 99%           80             99       Kurtosis       7.151526
-r; t=3.21 17:26:54
+r; t=3.14 9:13:43
 
-. keep if uhrs >=35
-(729,227 observations deleted)
-r; t=0.22 17:26:54
+. keep if uhrs >=30
+(460,767 observations deleted)
+r; t=0.22 9:13:44
 
 . 
 . ** DROP MILITARY **
@@ -124,38 +124,38 @@ r; t=0.22 17:26:54
 
                  Occupation, 2010 basis |      Freq.     Percent        Cum.
 ----------------------------------------+-----------------------------------
-Military Officer Special and Tactical O |      2,329       10.35       10.35
-First-Line Enlisted Military Supervisor |      2,173        9.66       20.01
-Military Enlisted Tactical Operations a |      7,307       32.48       52.48
-           Military, Rank Not Specified |     10,691       47.52      100.00
+Military Officer Special and Tactical O |      2,336       10.25       10.25
+First-Line Enlisted Military Supervisor |      2,184        9.58       19.83
+Military Enlisted Tactical Operations a |      7,448       32.68       52.51
+           Military, Rank Not Specified |     10,823       47.49      100.00
 ----------------------------------------+-----------------------------------
-                                  Total |     22,500      100.00
-r; t=0.60 17:26:55
+                                  Total |     22,791      100.00
+r; t=0.63 9:13:44
 
 . drop if inlist(occsoc, "551010", "552010", "553010", "559830")
-(22,500 observations deleted)
-r; t=0.69 17:26:56
+(22,791 observations deleted)
+r; t=0.72 9:13:45
 
 . 
 . ** DROP NO WAGE INCOME OBS **
 . count if incwage <= 0
-  207,160
-r; t=0.09 17:26:56
+  234,146
+r; t=0.11 9:13:45
 
 . drop if incwage <= 0
-(207,160 observations deleted)
-r; t=0.19 17:26:56
+(234,146 observations deleted)
+r; t=0.20 9:13:45
 
 . 
 . ** KEEP AGES 22-64 **
 . keep if age >= $MINAGE & age <= $MAXAGE
-(346,238 observations deleted)
-r; t=0.22 17:26:56
+(390,415 observations deleted)
+r; t=0.24 9:13:46
 
 . log close
       name:  <unnamed>
-       log:  C:\Users\mattm\Desktop\Underemployment\college-underemployment\output/ACS_filte
-> ring.txt
+       log:  C:\Users\mattm\Desktop\Underemployment\college-underemployment\output/ACS_f
+> iltering.txt
   log type:  text
- closed on:   6 Jun 2024, 17:26:56
---------------------------------------------------------------------------------------------
+ closed on:  13 Jun 2024, 09:13:46
+----------------------------------------------------------------------------------------

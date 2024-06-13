@@ -12,7 +12,7 @@ use "../intermediate/data_by_occ_wide", clear
 	keep age bls occ educ* tot *_undereduc *_bls_educ *_overeduc
 	
 ** CREATE KEY INDICATORS
-gen maj_overeduc = (n_overeduc > n_bls_educ + n_undereduc)
+gen maj_overeduc = (nwtd_overeduc > nwtd_bls_educ + nwtd_undereduc)
 	replace maj_overeduc = 0 if mi(maj_overeduc)
 gen suff_both = (suff_overeduc + suff_bls_educ == 2)
 
@@ -25,7 +25,8 @@ foreach x in `CAT' {
 }
 	
 ** CREATE MEDIAN/AVG OVEREDUCATION SHARES **
-gen overeduc_share = n_overeduc/(n_overeduc + n_bls + n_undereduc) if maj == 1
+gen overeduc_share = nwtd_overeduc/(nwtd_overeduc + nwtd_bls + nwtd_undereduc) ///
+ if maj == 1
 	bysort age educ_req: egen overeduc_share_med = median(overeduc_share)
 	bysort age educ_req: egen overeduc_share_avg = mean(overeduc_share)
 	 
@@ -62,7 +63,7 @@ use "../intermediate/data_by_occ_wide", clear
 gen suff_both = (suff_less_BA + suff_BA_plus == 2)
 
 ** CALCULATE BA+ SHARES **
-gen BA_plus_share = n_BA_plus / (n_BA_plus + n_less_BA)
+gen BA_plus_share = nwtd_BA_plus / (nwtd_BA_plus + nwtd_less_BA)
 
 ** MEDIAN WAGES LOOP **
 local CAT "BA_plus less_BA"

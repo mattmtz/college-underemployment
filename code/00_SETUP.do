@@ -35,12 +35,10 @@ global IPUMS "usa_00004.dat"
 do "code/A1_IPUMS_download.do"
 cd "$CD"
 do "code/A2_Filter IPUMS Data.do"
-do "code/A3_Clean BLS Data.do"
-do "code/A4_Create Underemployment Dataset.do"
+do "code/A3_Create Underemployment Dataset.do"
 
 ** CREATE INTERMEDIATE DATASETS **
-do "code/B1_Occupation Counts by Educ Category.do"
-do "code/B2_Occupation Earnings by Educ Category.do"
-do "code/B3_Create Educ Req Intermediate Data.do"
+do "code/B1_Occupation Counts by Category.do"
+do "code/B2_Create Categorized Dataset.do"
 
-** TYPICAL RUNTIME: ~22 minutes
+** TYPICAL RUNTIME: ~20 minutes

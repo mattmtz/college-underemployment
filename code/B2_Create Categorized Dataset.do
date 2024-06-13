@@ -7,6 +7,9 @@
 
 use "../intermediate/underemployment_data", clear
 
+** CREATE COUNTING VARIABLE **
+gen n=1
+
 ** CREATE LOCAL WITH AGE DUMMIES **
 unab AGEDUMS: agedum_*
 di "`AGEDUMS'"
@@ -150,7 +153,7 @@ merge 1:1 bls_occ_title age_cat cln_educ_cat educ_re* ///
 	drop _merge
 
 ** SAVE DATA **
-order bls_occ occ_soc educ_req educ_req_n age_cat cln_educ_cat n med_wage
+order bls_occ occ_soc educ_req educ_req_n age_c cln_educ n_w n_r suff med avg
 gsort age_cat cln_educ_cat educ_req_nbr occ_soc
 
 save "../intermediate/data_by_occ", replace
@@ -172,19 +175,17 @@ replace cln_educ_cat = "BA_plus" if cln_educ_cat == "BA+"
 replace cln_educ_cat = "BA" if cln_educ_cat == "bachelors"
 replace cln_educ_cat = "HS" if cln_educ_cat == "hs"
 
-rename (n med_wage avg_wage) (n_ mwage_ awage_)
-
-gen suff_ = (low_n_flag == 0)
-	drop low_n
+rename (n_raw n_wtd med_wage avg_wage suff_flag) ///
+ (nraw_ nwtd_ mwage_ awage_ suff_)
 
 ** CREATE AGE CAT/OCC.-LEVEL DATA **
-reshape wide n_ mwage_ awage_ suff_, i(age_cat bls occ educ*) j(cln_educ) string
+reshape wide nr nw mwage_ awage_ suff_, i(age_cat bls occ educ*) j(cln_educ) string
 
 gen tot = 1
-order age_cat bls occ educ* tot suff_* n_* mwage_* awage_*
+order age_cat bls occ educ* tot suff_* n* mwage_* awage_*
 	
 ** CLEAN VARIABLES **
-foreach var of varlist suff_* n_* {
+foreach var of varlist suff_* n* {
 	replace `var' = 0 if mi(`var')
 }
 

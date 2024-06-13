@@ -30,7 +30,7 @@ keep if wkswork2 == 6
 
 ** KEEP FT WORKERS **
 sum uhrs, d
-keep if uhrs >=35
+keep if uhrs >=30
 
 ** DROP MILITARY **
 tab occ2010 if inlist(occsoc, "551010", "552010", "553010", "559830")

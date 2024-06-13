@@ -17,13 +17,13 @@ keep if inlist(cln_educ_cat, "all_workers", "bls_educ", "hs", ///
 keep if inlist(educ_req_nbr, 2, 4, 5)
 
 ** SET LOW-N OBS TO MISSING **
-replace med_wage = . if low_n_flag == 1
-drop avg_wage low_n
+replace med_wage = . if suff == 0
+drop avg_wage suff
 
 ** RESHAPE DATA **
-rename (n med_wage) (n_ mwage_)
-reshape wide n_ mwage_, i(bls occ age_cat educ*) j(cln_educ_cat) string
-	order age_cat bls n_* mwage_*
+rename (n_raw n_wtd med_wage) (nraw_ nwtd_ mwage_)
+reshape wide nraw_ nwtd_ mwage_, i(bls occ age_cat educ*) j(cln_educ_cat) string
+	order age_cat bls nraw* nwtd* mwage_*
 	
 ** PREMIUM FLAGS **
 gen ovl_prem_aa_hs = (mwage_as > $AA_PREM1 * mwage_hs)
@@ -50,7 +50,6 @@ gen ovl_prem_ma_ba = (mwage_ma > $MA_PREM3 * mwage_ba)
 	replace ovl_prem_ma_ba = . if mi(mwage_ma) | mi(mwage_ba)
 	gen suff_ma_ba = (!mi(ovl_prem_ma_ba))
 
-	
 ** WAGE DIFFERENTIALS **
 gen pct_incr_aa_hs = mwage_as / mwage_hs - 1 if educ_req_nbr == 2
 gen pct_incr_ba_hs = mwage_ba / mwage_hs - 1 if educ_req_nbr == 2
@@ -152,7 +151,7 @@ use `OVERVIEW', clear
 
 ** EXPORT DATA **
 gsort age_cat educ_req_nbr bls
-order age_cat educ* bls occ suff_* n_* ovl_* premium* mwage* pct_incr*
+order age_cat educ* bls occ suff_* n* ovl_* premium* mwage* pct_incr*
 	drop educ_req_nbr
 	
 save "../intermediate/premium_data", replace
