@@ -7,9 +7,6 @@
 
 use "../intermediate/underemployment_data", clear
 
-** CREATE COUNTING VARIABLE **
-gen n=1
-
 ** CREATE LOCAL WITH AGE DUMMIES **
 unab AGEDUMS: agedum_*
 di "`AGEDUMS'"
@@ -125,6 +122,7 @@ restore
 *** CREATE FINAL DATASET ***
 ****************************
 
+*** COMBINE ALL DATA ***
 clear
 tempfile earndat
 save `earndat', emptyok
@@ -146,47 +144,44 @@ replace age_cat = substr(age_cat, strpos(age_cat, "_")+1, .)
 replace age_cat = subinstr(age_cat, "_", "-", .)
 replace age_cat = "all_workers" if age_cat == "all"
 
-** CREATE COMBINED DATA **
+** ADD EMPLOYEE COUNTS **
 merge 1:1 bls_occ_title age_cat cln_educ_cat educ_re* ///
  using "../intermediate/counts_by_occ"
 	assert _merge==3
 	drop _merge
 
+*** CREATE COMPARISON VALUE FOR PREMIUM CALCULATION ***
+gen int_wage = 0
+	replace int_wage = med_wage if cln_educ_cat == "bls_educ"
+	bysort age_cat bls_occ_title: egen comp_wage = max(int_wage)
+	drop int_wage
+	replace comp_wage = . if inlist(educ_req_nbr, 3.5, 7) | mi(educ_req)
+	
+** PREMIUM FLAGS **
+gen prem_hs = (med_wage > $AA_PREM1 * comp_wage & cln_educ == "associates")
+	replace prem_hs = 1 if med_wage > $BA_PREM1 * comp_wage & ///
+	 cln_educ == "bachelors"
+	replace prem_hs = 1 if med_wage > $MA_PREM1 * comp_wage & ///
+	 cln_educ == "masters"
+	replace prem_hs = . if suff_flag == 0 | educ_req_nbr != 2 | ///
+	 !inlist(cln_educ_cat, "associates", "bachelors", "masters")
+
+gen prem_aa = (med_wage > $BA_PREM2 * comp_wage & cln_educ == "bachelors")
+	replace prem_aa =  1 if med_wage > $MA_PREM2 * comp_wage & ///
+	 cln_educ == "masters"
+	replace prem_aa = . if suff_flag == 0 | educ_req_nbr != 4 | ///
+	 !inlist(cln_educ_cat, "bachelors", "masters")
+
+gen prem_ba = (med_wage > $MA_PREM3 * comp_wage & cln_educ == "masters")
+	replace prem_ba = . if suff_flag == 0 | educ_req_nbr != 5 | ///
+	 cln_educ_cat != "masters"
+
 ** SAVE DATA **
-order bls_occ occ_soc educ_req educ_req_n age_c cln_educ n_w n_r suff med avg
+order bls_occ occ_soc educ_req educ_req_n age_c cln_educ n_wtd n_raw suff* ///
+ comp_wage med_wage avg_wage prem_hs prem_aa prem_ba
 gsort age_cat cln_educ_cat educ_req_nbr occ_soc
 
 save "../intermediate/data_by_occ", replace
 
 export excel using "output/summary_tables.xlsx", ///
  first(var) sheet("data_by_occ", replace)
-
-**************************************
-*** CREATE WIDE VERSION OF DATASET ***
-**************************************
-
-** KEEP ONLY RELEVANT DATA **
-drop if inlist(educ_req_nbr, 3.5, 7) | mi(educ_req_nbr)
-keep if inlist(cln_educ_cat, "undereduc", "bls_educ", ///
- "overeduc", "less_BA", "BA+", "bachelors", "hs")
- 
-** PREP DATA FOR RESHAPE **
-replace cln_educ_cat = "BA_plus" if cln_educ_cat == "BA+"
-replace cln_educ_cat = "BA" if cln_educ_cat == "bachelors"
-replace cln_educ_cat = "HS" if cln_educ_cat == "hs"
-
-rename (n_raw n_wtd med_wage avg_wage suff_flag) ///
- (nraw_ nwtd_ mwage_ awage_ suff_)
-
-** CREATE AGE CAT/OCC.-LEVEL DATA **
-reshape wide nr nw mwage_ awage_ suff_, i(age_cat bls occ educ*) j(cln_educ) string
-
-gen tot = 1
-order age_cat bls occ educ* tot suff_* n* mwage_* awage_*
-	
-** CLEAN VARIABLES **
-foreach var of varlist suff_* n* {
-	replace `var' = 0 if mi(`var')
-}
-
-save "../intermediate/data_by_occ_wide", replace

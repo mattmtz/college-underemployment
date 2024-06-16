@@ -8,7 +8,7 @@
 ***********************************
 *** BLS EDUC VS. OVEREDUC TABLE ***
 ***********************************
-use "../intermediate/data_by_occ_wide", clear
+use "../intermediate/data_by_occ", clear
 	keep age bls occ educ* tot *_undereduc *_bls_educ *_overeduc
 	
 ** CREATE KEY INDICATORS
