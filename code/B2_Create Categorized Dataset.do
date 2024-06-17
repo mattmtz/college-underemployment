@@ -185,3 +185,31 @@ save "../intermediate/data_by_occ", replace
 
 export excel using "output/summary_tables.xlsx", ///
  first(var) sheet("data_by_occ", replace)
+
+***********************************
+*** CREATE WIDE VERSION OF DATA ***
+***********************************
+
+drop comp_wage prem_*
+
+*** CLEAN DATA FOR RESHAPE ***
+rename (n_wtd n_raw suff_flag med_wage avg_wage) ///
+ (nwtd_ nraw_ suff_ med_wage_ avg_wage_)
+
+replace cln_educ_cat = "BA_plus" if cln_educ_cat == "BA+"
+replace cln_educ_cat = "phd_prof" if strpos(cln_educ_cat, "doct")
+
+*** RESHAPE DATA ***
+reshape wide *_, i(bls occ educ_* age_cat) j(cln_educ_cat) string
+
+*** CLEAN RESHAPED COUNTS ***
+unab NCOUNTS: nraw* nwtd*
+foreach var of varlist `NCOUNTS' {
+	replace `var' = 0 if mi(`var')
+}
+
+*** EXPORT DATA ***
+order age_cat bls occ educ_* suff* nraw* nwtd* med_wage* avg_wage*
+gsort age_cat educ_req_nbr bls
+
+save "../intermediate/data_by_occ_wide", replace

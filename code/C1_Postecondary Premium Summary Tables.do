@@ -11,18 +11,16 @@
 
 *** FILTER DATA ***
 use "../intermediate/data_by_occ", clear
-	keep if inlist(cln_educ_cat, "bls_educ", "associates", "bachelors", "masters")
+	keep if inlist(cln_educ_cat, "bls_educ", "associates", "bachelors", ///
+	"masters", "all_workers")
 	drop avg_wage suff_flag
-	*drop if inlist(cln_educ_cat, "BA+", "less_BA", "all_workers", "undereduc", "overeduc")
 
 *** RESHAPE DATA ***
 replace cln_educ_cat = "_" + cln_educ_cat if ///
- inlist(cln_educ_cat, "bls_educ", "less_hs", "hs") 
-replace cln_educ_cat = "_somecol" if cln_educ_cat == "some_college"
+ inlist(cln_educ_cat, "all_workers", "bls_educ")
 replace cln_educ_cat = "_aa" if cln_educ_cat == "associates"
 replace cln_educ_cat = "_ba" if cln_educ_cat == "bachelors"
 replace cln_educ_cat = "_ma" if cln_educ_cat == "masters"
-replace cln_educ_cat = "_phd" if strpos(cln_educ_cat, "doctor")
 
 reshape wide n_* med_wage prem*, i(bls occ educ* age comp_wage) ///
  j(cln_educ_cat) string
@@ -101,8 +99,7 @@ preserve
 		 cln_ed == "ma" & incwage > $MA_PREM3 * med_wage_bls_educ
 		 
 	* Collapse data
-	collapse (sum) individ_prem_ = premium, ///
-	 by(age_cat bls_occ cln_educ_cat educ_re*)
+	collapse (sum) individ_prem_ = premium, by(age_cat bls cln_educ_cat educ_re*)
 	 
 	* Reshape wide
 	reshape wide individ_prem_, i(bls age_cat educ_re*) j(cln_educ_cat) string
@@ -135,8 +132,8 @@ foreach x in `CAT' {
 
 gen occ_count = 1
 
-order age_cat bls occ_soc educ_* occ_count suff_* n_raw* n_wtd* ///
- comp_wage med_wage* prem_* individ_prem*
+order age_cat bls occ_soc educ_* occ_count suff_* n_raw_all n_r* ///
+ n_wtd_all n_w* comp_wage med_wage_all med_wage* prem_* individ_prem*
  gsort age_cat educ_req_nbr
  
 ** EXPORT DATA ***
