@@ -50,11 +50,11 @@ save `OCCDAT'
 
 use "../intermediate/underemployment_data", clear
 
-** PREPARE DATA **
+*** PREPARE DATA ***
 keep if inlist(cln_educ_cat, "associates", "bachelors", "masters")
 keep bls_occ cln_educ_cat educ_re* agedum* incwage perwt
 
-** COUNTS OF OVEREDUCATION **
+*** COUNTS OF OVEREDUCATION ***
 unab AGEDUMS: agedum_*
 
 foreach var of varlist `AGEDUMS' {
@@ -110,7 +110,7 @@ preserve
 restore
 }
 
-** APPEND PREMIUM COUNTS **
+*** APPEND PREMIUM COUNTS ***
 clear
 tempfile premdat
 save `premdat', emptyok
@@ -120,7 +120,7 @@ foreach x in `AGEDUMS' {
 	save `"`premdat'"', replace
 }
 
-** COMBINE ALL DATA **
+*** COMBINE ALL DATA ***
 use `OCCDAT', clear
 	merge 1:1 bls_occ_title age_cat using `premdat', keep(3)
 	drop _merge
@@ -136,7 +136,7 @@ order age_cat bls occ_soc educ_* occ_count suff_* n_raw_all n_r* ///
  n_wtd_all n_w* comp_wage med_wage_all med_wage* prem_* individ_prem*
  gsort age_cat educ_req_nbr
  
-** EXPORT DATA ***
+*** EXPORT DATA ***
 save "../intermediate/premium_data", replace
 
 export excel using "output/summary_tables.xlsx", ///
