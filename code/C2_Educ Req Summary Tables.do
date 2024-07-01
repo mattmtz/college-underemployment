@@ -33,12 +33,6 @@ gen overeduc_share = nwtd_overeduc/(nwtd_overeduc + nwtd_bls + nwtd_undereduc) /
 	bysort age educ_req: egen overeduc_share_med = median(overeduc_share)
 	bysort age educ_req: egen overeduc_share_avg = mean(overeduc_share)
 	 
-** CALCULATE OVEREDUCATION PREMIA **
-gen overeduc_prem_med = (med_wage_overeduc > $OVEREDUC_PREMIUM * med_wage_bls_educ)
-	replace overeduc_prem_med = 0 if suff_both == 0
-gen overeduc_prem_avg = (avg_wage_overeduc > $OVEREDUC_PREMIUM * avg_wage_bls_educ)
-	replace overeduc_prem_avg = 0 if suff_both == 0
-		
 ** COLLAPSE DATA **
 collapse (sum) tot suff_* maj_ov overeduc_p* ///
  (mean) overeduc_share_* cat_med_wage_*, by(age_cat educ_re*)
@@ -49,7 +43,7 @@ drop suff_undereduc
 tab maj_overeduc if mi(overeduc_share_med) | mi(overeduc_share_avg)
 	
 ** EXPORT DATA **
-order age_cat educ_re* tot suff* maj_overeduc cat_* overeduc_sh* overeduc_p*
+order age_cat educ_re* tot suff* maj_overeduc cat_* overeduc_sh*
 gsort age_cat educ_req_nbr
 	drop educ_req_nbr
 
