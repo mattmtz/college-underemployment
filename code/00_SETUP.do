@@ -17,13 +17,12 @@ global MINAGE 22
 global MAXAGE 64
 global NFLAG 75 // minimum number of observations to consider median wages
 global EDUC_PREM 0.1 // expected wage premium for additional yr of schooling
-global OVEREDUC_PREMIUM 1.2 // cutoff for acceptable premium of overeducation
-global AA_PREM1 1 + 2*$EDUC_PREM // cutoff for AA wage premium over HS wage
-global BA_PREM1 1 + 4*$EDUC_PREM // cutoff for BA wage premium over HS wage
-global BA_PREM2 1 + 2*$EDUC_PREM // cutoff for BA wage premium over AA wage
-global MA_PREM1 1 + 6*$EDUC_PREM // cutoff for MA wage premium over HS wage
-global MA_PREM2 1 + 4*$EDUC_PREM // cutoff for MA wage premium over AA wage
-global MA_PREM3 1 + 2*$EDUC_PREM // cutoff for MA wage premium over BA wage
+global AA_PREM1 (1 + 2*$EDUC_PREM ) // cutoff for AA wage premium over HS wage
+global BA_PREM1 (1 + 4*$EDUC_PREM ) // cutoff for BA wage premium over HS wage
+global BA_PREM2 (1 + 2*$EDUC_PREM ) // cutoff for BA wage premium over AA wage
+global MA_PREM1 (1 + 6*$EDUC_PREM ) // cutoff for MA wage premium over HS wage
+global MA_PREM2 (1 + 4*$EDUC_PREM ) // cutoff for MA wage premium over AA wage
+global MA_PREM3 (1 + 2*$EDUC_PREM ) // cutoff for MA wage premium over BA wage
 
 ** SET WORKING DIRECTORY GLOBAL **
 global CD "C:\Users\mattm\Desktop\Underemployment\college-underemployment"
