@@ -112,4 +112,4 @@ gen agg_educ_lvl = "undereduc" if cln_educ_cat_nbr < educ_req_nbr
 
 ** EXPORT DATA **
 label drop year_lbl
-save "../intermediate/underemployment_data", replace
+save "../intermediate/clean_acs_data", replace

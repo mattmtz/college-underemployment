@@ -5,7 +5,7 @@
 *** DATE:    05/22/2024
 ********************************/
 
-use "../intermediate/underemployment_data", clear
+use "../intermediate/clean_acs_data", clear
 
 ** CREATE LOCAL WITH AGE DUMMIES **
 unab AGEDUMS: agedum_*
@@ -118,9 +118,9 @@ preserve
 restore
 }
 
-****************************
-*** CREATE FINAL DATASET ***
-****************************
+*******************************
+*** CREATE COMBINED DATASET ***
+*******************************
 
 *** COMBINE ALL DATA ***
 clear
@@ -150,66 +150,38 @@ merge 1:1 bls_occ_title age_cat cln_educ_cat educ_re* ///
 	assert _merge==3
 	drop _merge
 
+*** CREATE FINAL SUFFICIENCY FLAG ***
+gen int_count = 0
+	replace int_count = n_raw if cln_educ_cat == "bls_educ"
+	bysort age_cat bls_occ_title: egen comp_count = max(int_count)
+
+gen int_flag = 0
+	replace int_flag = 1 if mi(educ_req) | inlist(educ_req_nbr, 3.5, 7)
+	replace int_flag = 1 if comp_count >= $NFLAG & !mi(comp_count)
+	
+rename suff_flag int_suff_flag
+gen suff_flag = (int_suff_flag == 1 & int_flag == 1)
+
 *** CREATE COMPARISON VALUE FOR PREMIUM CALCULATION ***
 gen int_wage = 0
 	replace int_wage = med_wage if cln_educ_cat == "bls_educ"
 	bysort age_cat bls_occ_title: egen comp_wage = max(int_wage)
-	drop int_wage
-	replace comp_wage = . if inlist(educ_req_nbr, 3.5, 7) | mi(educ_req)
+	replace comp_wage = . if inlist(educ_req_nbr, 3.5, 7) | mi(educ_req) | ///
+	 suff_flag == 0
 	
-** PREMIUM FLAGS **
-gen prem_hs = (med_wage > $AA_PREM1 * comp_wage & cln_educ == "associates")
-	replace prem_hs = 1 if med_wage > $BA_PREM1 * comp_wage & ///
-	 cln_educ == "bachelors"
-	replace prem_hs = 1 if med_wage > $MA_PREM1 * comp_wage & ///
-	 cln_educ == "masters"
-	replace prem_hs = . if suff_flag == 0 | educ_req_nbr != 2 | ///
-	 !inlist(cln_educ_cat, "associates", "bachelors", "masters")
+*** BA PREMIUM FLAG ***
+gen ovl_prem_ba = (med_wage > $BA_PREM1 * comp_wage & cln_educ == "bachelors" ///
+               & educ_req_nbr == 2)
+	replace ovl_prem_ba = 1 if med_wage > $BA_PREM2 * comp_wage & ///
+	 cln_educ == "bachelors" & inlist(educ_req_nbr, 3, 4)
+	replace ovl_prem_ba = 0 if med_wage <= $BA_PREM2 * comp_wage & ///
+	 cln_educ == "bachelors" & inlist(educ_req_nbr, 3, 4)
+	replace ovl_prem_ba = . if cln_educ != "bachelors" | educ_req_nbr > 4
 
-gen prem_aa = (med_wage > $BA_PREM2 * comp_wage & cln_educ == "bachelors")
-	replace prem_aa =  1 if med_wage > $MA_PREM2 * comp_wage & ///
-	 cln_educ == "masters"
-	replace prem_aa = . if suff_flag == 0 | educ_req_nbr != 4 | ///
-	 !inlist(cln_educ_cat, "bachelors", "masters")
-
-gen prem_ba = (med_wage > $MA_PREM3 * comp_wage & cln_educ == "masters")
-	replace prem_ba = . if suff_flag == 0 | educ_req_nbr != 5 | ///
-	 cln_educ_cat != "masters"
-
-** SAVE DATA **
-order bls_occ occ_soc educ_req educ_req_n age_c cln_educ n_wtd n_raw suff* ///
- comp_wage med_wage avg_wage prem_hs prem_aa prem_ba
-gsort age_cat cln_educ_cat educ_req_nbr occ_soc
+*** SAVE DATA ***
+drop int_*
+order age_c bls_occ occ_soc educ_req educ_req_n cln_educ n_wtd n_raw suff ///
+ comp_count comp_wage med_wage avg_wage ovl_prem_ba
+gsort age_cat cln_educ_cat educ_req_nbr bls
 
 save "../intermediate/data_by_occ", replace
-
-export excel using "output/summary_tables.xlsx", ///
- first(var) sheet("data_by_occ", replace)
-
-***********************************
-*** CREATE WIDE VERSION OF DATA ***
-***********************************
-
-drop comp_wage prem_*
-
-*** CLEAN DATA FOR RESHAPE ***
-rename (n_wtd n_raw suff_flag med_wage avg_wage) ///
- (nwtd_ nraw_ suff_ med_wage_ avg_wage_)
-
-replace cln_educ_cat = "BA_plus" if cln_educ_cat == "BA+"
-replace cln_educ_cat = "phd_prof" if strpos(cln_educ_cat, "doct")
-
-*** RESHAPE DATA ***
-reshape wide *_, i(bls occ educ_* age_cat) j(cln_educ_cat) string
-
-*** CLEAN RESHAPED COUNTS ***
-unab NCOUNTS: nraw* nwtd*
-foreach var of varlist `NCOUNTS' {
-	replace `var' = 0 if mi(`var')
-}
-
-*** EXPORT DATA ***
-order age_cat bls occ educ_* suff* nraw* nwtd* med_wage* avg_wage*
-gsort age_cat educ_req_nbr bls
-
-save "../intermediate/data_by_occ_wide", replace

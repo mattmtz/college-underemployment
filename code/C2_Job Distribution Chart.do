@@ -40,7 +40,7 @@ export excel using "output/summary_tables.xlsx", ///
 *** CREATE OCC SHARES GRAPH ***
 *******************************
 
-use "../intermediate/underemployment_data", clear
+use "../intermediate/clean_acs_data", clear
 
 *** KEEP VARIABLES OF INTEREST ***
 keep agedum* educ_re* cln_educ_cat incwage perwt
@@ -94,7 +94,7 @@ export excel using "output/summary_tables.xlsx", ///
 *** CREATE WAGE DENSITY GRAPHS ***
 **********************************
 
-use "../intermediate/underemployment_data", clear
+use "../intermediate/filtered_acs_data", clear
 
 *** KEEP ONLY BA HOLDERS IN HS- OR BA- LEVEL JOBS ***
 keep if inlist(educ_req_nbr, 2, 5) & cln_educ_cat == "bachelors"

@@ -9,7 +9,7 @@
 *** CHECK UNDEREMPLOYMENT SHARES ***
 ************************************
 
-use "../intermediate/underemployment_data", clear
+use "../intermediate/clean_acs_data", clear
 
 ** KEEP AGE CATEGORY OF INTEREST **
 keep if agedum_25_54 == 1

@@ -5,7 +5,7 @@
 *** DATE:    06/04/2024
 ********************************/
 
-use "../intermediate/underemployment_data", clear
+use "../intermediate/clean_acs_data", clear
 
 ** CREATE COUNTING VARIABLE **
 gen n=1

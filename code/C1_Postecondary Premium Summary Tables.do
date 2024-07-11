@@ -48,7 +48,7 @@ save `OCCDAT'
 *** CREATE FULL UNDEREMPLOYMENT DATA ***
 ****************************************
 
-use "../intermediate/underemployment_data", clear
+use "../intermediate/clean_acs_data", clear
 
 *** PREPARE DATA ***
 keep if inlist(cln_educ_cat, "associates", "bachelors", "masters")
