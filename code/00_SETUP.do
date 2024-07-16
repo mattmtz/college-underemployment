@@ -28,7 +28,7 @@ cd "$CD"
 global IPUMS "usa_00004.dat"
 
 ** CREATE DATASET FOR ANALYSIS **
-do "code/A1_IPUMS_download.do"
+do "code/A1_IPUMS Download.do"
 cd "$CD"
 do "code/A2_Filter IPUMS Data.do"
 do "code/A3_Clean IPUMS Dataset.do"
@@ -38,4 +38,4 @@ do "code/B1_Occupation Counts by Category.do"
 do "code/B2_Create Categorized Dataset.do"
 do "code/B3_Calculate Underemployment.do"
 
-** TYPICAL RUNTIME: ~23 minutes
+** TYPICAL RUNTIME: ~28 minutes
