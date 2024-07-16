@@ -21,7 +21,7 @@ foreach var of varlist `AGEDUMS' {
 preserve
 	keep if `var' == 1
 	collapse (p50) med_wage=incwage (mean) avg_wage=incwage [pw = perwt], ///
-	 by(bls_occ_title occ_soc educ_re*)
+	 by(bls_occ_title occ_soc educ_re* ftfy)
 	
 	gen cln_educ_cat = "all_workers"
 	gen age_cat = "`var'"
@@ -33,7 +33,7 @@ restore
 preserve
 	keep if `var' == 1
 	collapse (p50) med_wage=incwage (mean) avg_wage=incwage [pw = perwt], ///
-	 by(bls_occ_title occ_soc educ_re* cln_educ_cat)
+	 by(bls_occ_title occ_soc educ_re* cln_educ_cat ftfy)
 		 
 	gen age_cat = "`var'"
 	tempfile D_`var'
@@ -44,7 +44,7 @@ restore
 preserve
 	keep if `var' == 1
 	collapse (p50) med_wage=incwage (mean) avg_wage=incwage [pw = perwt], ///
-	 by(bls_occ_title occ_soc educ_re* postsec_deg)
+	 by(bls_occ_title occ_soc educ_re* postsec_deg ftfy)
 	
 	gen cln_educ_cat = "BA+" if postsec == 1
 	replace cln_educ_cat = "less_BA" if postsec==0
@@ -59,10 +59,10 @@ restore
 preserve
 	keep if `var'==1
 	** DROP UNUSABLE EDUC REQ CATEGORIES **
-	drop if inlist(educ_req_nbr, 3.5, 7)
+	drop if educ_req_nbr == 7
 		
 	collapse (p50) med_wage=incwage (mean) avg_wage=incwage [pw = perwt], ///
-	 by(bls occ_soc educ_re* agg_educ)
+	 by(bls occ_soc educ_re* agg_educ ftfy)
 		
 	rename agg_educ cln_educ_cat
 	gen age_cat = "`var'"
@@ -81,7 +81,7 @@ foreach var of varlist `AGEDUMS' {
 preserve
 	keep if `var' == 1
 	collapse (p50) med_wage=incwage (mean) avg_wage=incwage [pw = perwt], ///
-	 by(year)
+	 by(year ftfy)
 		
 	gen cln_educ_cat = "all_workers"
 	gen age_cat = "`var'"
@@ -95,7 +95,7 @@ restore
 preserve
 	keep if `var' == 1
 	collapse (p50) med_wage=incwage (mean) avg_wage=incwage [pw = perwt], ///
-	 by(cln_educ_cat)
+	 by(cln_educ_cat ftfy)
 
 	gen age_cat = "`var'"
 	tempfile D2_`var'
@@ -106,7 +106,7 @@ restore
 preserve
 	keep if `var' == 1
 	collapse (p50) med_wage=incwage (mean) avg_wage=incwage [pw = perwt], ///
-	 by(postsec_deg)
+	 by(postsec_deg ftfy)
 	
 	gen cln_educ_cat = "BA+" if postsec == 1
 		replace cln_educ_cat = "less_BA" if postsec==0
@@ -145,7 +145,7 @@ replace age_cat = subinstr(age_cat, "_", "-", .)
 replace age_cat = "all_workers" if age_cat == "all"
 
 ** ADD EMPLOYEE COUNTS **
-merge 1:1 bls_occ_title age_cat cln_educ_cat educ_re* ///
+merge 1:1 bls_occ_title age_cat cln_educ_cat educ_re* ftfy ///
  using "../intermediate/counts_by_occ"
 	assert _merge==3
 	drop _merge
@@ -153,10 +153,10 @@ merge 1:1 bls_occ_title age_cat cln_educ_cat educ_re* ///
 *** CREATE FINAL SUFFICIENCY FLAG ***
 gen int_count = 0
 	replace int_count = n_raw if cln_educ_cat == "bls_educ"
-	bysort age_cat bls_occ_title: egen comp_count = max(int_count)
+	bysort age_cat bls_occ_title ft: egen comp_count = max(int_count)
 
 gen int_flag = 0
-	replace int_flag = 1 if mi(educ_req) | inlist(educ_req_nbr, 3.5, 7)
+	replace int_flag = 1 if mi(educ_req) | educ_req_nbr == 7
 	replace int_flag = 1 if comp_count >= $NFLAG & !mi(comp_count)
 	
 rename suff_flag int_suff_flag
@@ -165,8 +165,8 @@ gen suff_flag = (int_suff_flag == 1 & int_flag == 1)
 *** CREATE COMPARISON VALUE FOR PREMIUM CALCULATION ***
 gen int_wage = 0
 	replace int_wage = med_wage if cln_educ_cat == "bls_educ"
-	bysort age_cat bls_occ_title: egen comp_wage = max(int_wage)
-	replace comp_wage = . if inlist(educ_req_nbr, 3.5, 7) | mi(educ_req) | ///
+	bysort age_cat bls_occ_title ft: egen comp_wage = max(int_wage)
+	replace comp_wage = . if educ_req_nbr == 7 | mi(educ_req) | ftfy == 0 | ///
 	 suff_flag == 0
 	
 *** BA PREMIUM FLAG ***

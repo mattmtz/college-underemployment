@@ -11,8 +11,8 @@
 
 *** PREPARE OCCUPATION-LEVEL DATA ***
 use "../intermediate/data_by_occ", clear
-	keep if cln_educ_cat == "bachelors" & suff_flag == 1
-	keep bls age_cat comp_wage ovl_prem_ba suff_flag
+	keep if cln_educ_cat == "bachelors" & suff_flag == 1 & ftfy == 1
+	keep bls age_cat comp_wage
 	
 	tempfile OCCDAT
 	save `OCCDAT'
@@ -48,7 +48,7 @@ preserve
 		replace underemp = 0 if educ_req_nbr >= 5 | mi(comp_wage)
 	
 	* Collapse data
-	collapse (sum) underemp, by(bls age_cat cln_educ_cat) 
+	collapse (sum) underemp, by(bls age_cat cln_educ_cat ftfy)
 	
 	tempfile U_`var'
 	save `U_`var''
@@ -71,19 +71,20 @@ foreach x in `AGEDUMS' {
 
 *** MERGE TO FULL DATASET ***
 use "../intermediate/data_by_occ", clear
-	merge 1:1 bls age_cat cln_educ using `underemp', nogen
+
+	merge 1:1 bls age_cat cln_educ ftfy using `underemp', nogen
 
 *** CALCULATE BLS UNDEREMPLOYMENT ***
 gen underemp_bls = n_wtd
-	replace underemp_bls = 0 if suff_flag == 0
+	replace underemp_bls = 0 if educ_req_nbr > 4
 	replace underemp_bls = . if cln_educ_cat != "bachelors" | ///
 	 bls == "All occupations"
 	
 *** EXPORT DATA ***	
-order age_c cln_educ_cat bls occ educ_r* n* comp_count suff comp_wage ///
+order age_c cln_educ_cat bls occ educ_r* ftfy n* comp_count suff comp_wage ///
  med_wage avg_wage ovl_prem underemp*
-gsort age_cat cln_educ_cat educ_req_nbr bls
-	
+gsort -ftfy age_cat cln_educ_cat educ_req_nbr bls
+
 save "../intermediate/underemployment_data", replace
 
 export excel using "output/summary_tables.xlsx", ///

@@ -25,7 +25,7 @@ preserve
 	keep if `var' == 1
 
 	collapse (sum) n_raw = n n_wtd = perwt, ///
-	 by(bls_occ_title occ_soc educ_re*)
+	 by(bls_occ_title occ_soc educ_re* ftfy)
 
 	gen cln_educ_cat = "all_workers"
 	gen age_cat = "`var'"
@@ -38,7 +38,7 @@ preserve
 	keep if `var' == 1
 	
 	collapse (sum) n_raw = n n_wtd = perwt, ///
-	 by(bls_occ_title occ_soc educ_re* cln_educ_cat)
+	 by(bls_occ_title occ_soc educ_re* cln_educ_cat ftfy)
 
 	gen age_cat = "`var'"
 	tempfile D_`var'
@@ -50,7 +50,7 @@ preserve
 	keep if `var' == 1
 	* Annual counts
 	collapse (sum) n_raw = n n_wtd = perwt, ///
-	 by(bls_occ_title occ_soc educ_re* postsec_deg)
+	 by(bls_occ_title occ_soc educ_re* postsec_deg ftfy)
 	 
 	gen cln_educ_cat = "BA+" if postsec == 1
 	replace cln_educ_cat = "less_BA" if postsec==0
@@ -65,11 +65,11 @@ restore
 preserve 
 	keep if `var' == 1
 	** DROP UNUSABLE EDUC REQ CATEGORIES **
-	drop if inlist(educ_req_nbr, 3.5, 7)
+	drop if educ_req_nbr == 7
 	
 	* Annual counts
 	collapse (sum) n_raw = n n_wtd = perwt, ///
-	 by(bls_occ_title occ_soc educ_re* agg_educ)
+	 by(bls_occ_title occ_soc educ_re* agg_educ ftfy)
 
 	rename agg_educ cln_educ_cat
 	
@@ -89,7 +89,7 @@ foreach var of varlist `AGEDUMS' {
 preserve 
 	keep if `var' == 1
 	* Annual counts
-	collapse (sum) n_raw = n n_wtd = perwt, by(year)
+	collapse (sum) n_raw = n n_wtd = perwt, by(year ftfy)
 	
 	gen cln_educ_cat = "all_workers"
 	gen age_cat = "`var'"
@@ -103,7 +103,7 @@ restore
 preserve
 	keep if `var' == 1
 	* Annual counts
-	collapse (sum) n_raw = n n_wtd = perwt, by(cln_educ_cat)
+	collapse (sum) n_raw = n n_wtd = perwt, by(cln_educ_cat ftfy)
 
 	gen age_cat = "`var'"
 	tempfile D2_`var'
@@ -114,7 +114,7 @@ restore
 preserve
 	keep if `var' == 1
 	* Annual counts
-	collapse (sum) n_raw = n n_wtd = perwt, by(postsec_deg)
+	collapse (sum) n_raw = n n_wtd = perwt, by(postsec_deg ftfy)
 
 	gen cln_educ_cat = "BA+" if postsec == 1
 	replace cln_educ_cat = "less_BA" if postsec==0

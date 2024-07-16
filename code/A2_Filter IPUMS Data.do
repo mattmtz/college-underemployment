@@ -2,10 +2,8 @@
 *** NAME:    MATT MARTINEZ
 *** PROJECT: UNDEREMPLOYMENT
 *** PURPOSE: FILTER IPUMS DATA
-*** DATE:    05/20/2024
+*** DATE:    07/12/2024
 ******************************/
-
-cd "$CD"
 
 *******************
 *** FILTER DATA ***
@@ -23,15 +21,6 @@ label list empstat_lbl
 tab empstat
 keep if empstat == 1
 
-** KEEP FULL-YR WORKERS **
-label list wkswork2_lbl
-tab wkswork2
-keep if wkswork2 == 6
-
-** KEEP FT WORKERS **
-sum uhrs, d
-keep if uhrs >=30
-
 ** DROP MILITARY **
 tab occ2010 if inlist(occsoc, "551010", "552010", "553010", "559830")
 drop if inlist(occsoc, "551010", "552010", "553010", "559830")
@@ -42,6 +31,21 @@ drop if incwage <= 0
 
 ** KEEP AGES 22-64 **
 keep if age >= $MINAGE & age <= $MAXAGE
+
+** IDENTIFY FULL-YR WORKERS **
+label list wkswork2_lbl
+tab wkswork2
+count if wkswork2 == 6
+
+** IDENTIFY FT WORKERS **
+gen ftfy_flag = (uhrs >=30 & wkswork2 == 6)
+	label define ftfy_flag_lbl 0 "Not FTFY" 1 "FTFY (30+ hrs/wk)"
+	label values ftfy_flag ftfy_flag_lbl
+
+tab ftfy_flag
+
+tab educd
+
 log close
 
 **************************
@@ -72,6 +76,7 @@ rename (occ occsoc) (occ_acs occ_soc_ipums)
 
 ** CREATE AGE CATEGORIES **
 gen agedum_all = 1
+gen agedum_22_23 = (age < 24)
 gen agedum_22_27 = (age>21 & age <28)
 gen agedum_25_54 = (age>24 & age <54) 
 gen agedum_25_34 = (age>24 & age <35)

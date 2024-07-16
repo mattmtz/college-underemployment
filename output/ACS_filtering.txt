@@ -1,10 +1,10 @@
-----------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
       name:  <unnamed>
-       log:  C:\Users\mattm\Desktop\Underemployment\college-underemployment\output/ACS_f
-> iltering.txt
+       log:  C:\Users\mattm\Desktop\Underemployment\college-underemployment\output/ACS_filte
+> ring.txt
   log type:  text
- opened on:   1 Jul 2024, 13:08:09
-r; t=0.00 13:08:09
+ opened on:  15 Jul 2024, 15:14:44
+r; t=0.00 15:14:44
 
 . 
 . ** KEEP NOT-IN-SCHOOL RECORDS **
@@ -15,7 +15,7 @@ school_lbl:
            2 Yes, in school
            8 Unknown
            9 Missing
-r; t=0.00 13:08:09
+r; t=0.00 15:14:44
 
 . tab school
 
@@ -26,11 +26,11 @@ No, not in school | 11,759,612       74.80       77.58
    Yes, in school |  3,524,162       22.42      100.00
 ------------------+-----------------------------------
             Total | 15,721,123      100.00
-r; t=1.99 13:08:11
+r; t=0.58 15:14:44
 
 . keep if school == 1
 (3,961,511 observations deleted)
-r; t=0.76 13:08:12
+r; t=0.97 15:14:45
 
 . 
 . ** KEEP EMPLOYED **
@@ -41,7 +41,7 @@ empstat_lbl:
            2 Unemployed
            3 Not in labor force
            9 Unknown/Illegible
-r; t=0.00 13:08:12
+r; t=0.00 15:14:45
 
 . tab empstat
 
@@ -54,14 +54,48 @@ r; t=0.00 13:08:12
 Not in labor force |  4,646,347       39.51      100.00
 -------------------+-----------------------------------
              Total | 11,759,612      100.00
-r; t=0.38 13:08:12
+r; t=0.49 15:14:46
 
 . keep if empstat == 1
 (5,191,128 observations deleted)
-r; t=0.61 13:08:13
+r; t=0.63 15:14:46
 
 . 
-. ** KEEP FULL-YR WORKERS **
+. ** DROP MILITARY **
+. tab occ2010 if inlist(occsoc, "551010", "552010", "553010", "559830")
+
+                 Occupation, 2010 basis |      Freq.     Percent        Cum.
+----------------------------------------+-----------------------------------
+Military Officer Special and Tactical O |      2,462        9.62        9.62
+First-Line Enlisted Military Supervisor |      2,287        8.94       18.56
+Military Enlisted Tactical Operations a |      8,771       34.28       52.84
+           Military, Rank Not Specified |     12,067       47.16      100.00
+----------------------------------------+-----------------------------------
+                                  Total |     25,587      100.00
+r; t=0.91 15:14:47
+
+. drop if inlist(occsoc, "551010", "552010", "553010", "559830")
+(25,587 observations deleted)
+r; t=0.98 15:14:48
+
+. 
+. ** DROP NO WAGE INCOME OBS **
+. count if incwage <= 0
+  385,098
+r; t=0.15 15:14:48
+
+. drop if incwage <= 0
+(385,098 observations deleted)
+r; t=0.30 15:14:49
+
+. 
+. ** KEEP AGES 22-64 **
+. keep if age >= $MINAGE & age <= $MAXAGE
+(671,595 observations deleted)
+r; t=0.34 15:14:49
+
+. 
+. ** IDENTIFY FULL-YR WORKERS **
 . label list wkswork2_lbl
 wkswork2_lbl:
            0 N/A
@@ -71,7 +105,7 @@ wkswork2_lbl:
            4 40-47 weeks
            5 48-49 weeks
            6 50-52 weeks
-r; t=0.00 13:08:13
+r; t=0.00 15:14:49
 
 . tab wkswork2
 
@@ -80,82 +114,81 @@ worked last |
       year, |
 intervalled |      Freq.     Percent        Cum.
 ------------+-----------------------------------
- 1-13 weeks |    208,165        3.17        3.17
-14-26 weeks |    169,709        2.58        5.75
-27-39 weeks |    200,278        3.05        8.80
-40-47 weeks |    284,170        4.33       13.13
-48-49 weeks |    102,450        1.56       14.69
-50-52 weeks |  5,603,712       85.31      100.00
+ 1-13 weeks |    142,148        2.59        2.59
+14-26 weeks |    117,202        2.14        4.73
+27-39 weeks |    147,096        2.68        7.41
+40-47 weeks |    218,137        3.98       11.38
+48-49 weeks |     78,308        1.43       12.81
+50-52 weeks |  4,783,313       87.19      100.00
 ------------+-----------------------------------
-      Total |  6,568,484      100.00
-r; t=0.19 13:08:13
+      Total |  5,486,204      100.00
+r; t=0.17 15:14:49
 
-. keep if wkswork2 == 6
-(964,772 observations deleted)
-r; t=0.30 13:08:13
-
-. 
-. ** KEEP FT WORKERS **
-. sum uhrs, d
-
-                 Usual hours worked per week
--------------------------------------------------------------
-      Percentiles      Smallest
- 1%            8              1
- 5%           20              1
-10%           30              1       Obs           5,603,712
-25%           40              1       Sum of Wgt.   5,603,712
-
-50%           40                      Mean           41.27043
-                        Largest       Std. Dev.      10.88623
-75%           45             99
-90%           50             99       Variance         118.51
-95%           60             99       Skewness        .317864
-99%           80             99       Kurtosis       7.151526
-r; t=3.84 13:08:17
-
-. keep if uhrs >=30
-(460,767 observations deleted)
-r; t=0.22 13:08:17
+. count if wkswork2 == 6
+  4,783,313
+r; t=0.13 15:14:49
 
 . 
-. ** DROP MILITARY **
-. tab occ2010 if inlist(occsoc, "551010", "552010", "553010", "559830")
+. ** IDENTIFY FT WORKERS **
+. gen ftfy_flag = (uhrs >=30 & wkswork2 == 6)
+r; t=0.23 15:14:50
 
-                 Occupation, 2010 basis |      Freq.     Percent        Cum.
+.         label define ftfy_flag_lbl 0 "Not FTFY" 1 "FTFY (30+ hrs/wk)"
+r; t=0.00 15:14:50
+
+.         label values ftfy_flag ftfy_flag_lbl
+r; t=0.00 15:14:50
+
+. 
+. tab ftfy_flag
+
+        ftfy_flag |      Freq.     Percent        Cum.
+------------------+-----------------------------------
+         Not FTFY |    990,611       18.06       18.06
+FTFY (30+ hrs/wk) |  4,495,593       81.94      100.00
+------------------+-----------------------------------
+            Total |  5,486,204      100.00
+r; t=0.19 15:14:50
+
+. 
+. tab educd
+
+       Educational attainment [detailed |
+                               version] |      Freq.     Percent        Cum.
 ----------------------------------------+-----------------------------------
-Military Officer Special and Tactical O |      2,336       10.25       10.25
-First-Line Enlisted Military Supervisor |      2,184        9.58       19.83
-Military Enlisted Tactical Operations a |      7,448       32.68       52.51
-           Military, Rank Not Specified |     10,823       47.49      100.00
+                 No schooling completed |     63,436        1.16        1.16
+              Nursery school, preschool |      1,189        0.02        1.18
+                           Kindergarten |        959        0.02        1.20
+                                Grade 1 |      1,373        0.03        1.22
+                                Grade 2 |      2,499        0.05        1.27
+                                Grade 3 |      5,324        0.10        1.36
+                                Grade 4 |      3,792        0.07        1.43
+                                Grade 5 |      6,303        0.11        1.55
+                                Grade 6 |     29,200        0.53        2.08
+                                Grade 7 |      7,300        0.13        2.21
+                                Grade 8 |     24,235        0.44        2.65
+                                Grade 9 |     37,900        0.69        3.34
+                               Grade 10 |     42,089        0.77        4.11
+                               Grade 11 |     51,820        0.94        5.06
+                 12th grade, no diploma |     83,052        1.51        6.57
+            Regular high school diploma |  1,088,495       19.84       26.41
+          GED or alternative credential |    186,823        3.41       29.82
+     Some college, but less than 1 year |    358,800        6.54       36.36
+1 or more years of college credit, no d |    672,993       12.27       48.62
+ Associate's degree, type not specified |    524,488        9.56       58.18
+                      Bachelor's degree |  1,405,903       25.63       83.81
+                        Master's degree |    633,164       11.54       95.35
+Professional degree beyond a bachelor's |    147,972        2.70       98.05
+                        Doctoral degree |    107,095        1.95      100.00
 ----------------------------------------+-----------------------------------
-                                  Total |     22,791      100.00
-r; t=0.74 13:08:18
-
-. drop if inlist(occsoc, "551010", "552010", "553010", "559830")
-(22,791 observations deleted)
-r; t=0.80 13:08:19
+                                  Total |  5,486,204      100.00
+r; t=0.34 15:14:50
 
 . 
-. ** DROP NO WAGE INCOME OBS **
-. count if incwage <= 0
-  234,146
-r; t=0.13 13:08:19
-
-. drop if incwage <= 0
-(234,146 observations deleted)
-r; t=0.20 13:08:19
-
-. 
-. ** KEEP AGES 22-64 **
-. keep if age >= $MINAGE & age <= $MAXAGE
-(390,415 observations deleted)
-r; t=0.24 13:08:20
-
 . log close
       name:  <unnamed>
-       log:  C:\Users\mattm\Desktop\Underemployment\college-underemployment\output/ACS_f
-> iltering.txt
+       log:  C:\Users\mattm\Desktop\Underemployment\college-underemployment\output/ACS_filte
+> ring.txt
   log type:  text
- closed on:   1 Jul 2024, 13:08:20
-----------------------------------------------------------------------------------------
+ closed on:  15 Jul 2024, 15:14:50
+--------------------------------------------------------------------------------------------

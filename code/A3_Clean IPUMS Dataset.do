@@ -23,8 +23,8 @@ rename (b t) (occ_soc educ_req)
 ** ASSIGN ORDINAL RANKING TO EDUCATIONAL REQUIREMENTS **
 gen educ_req_nbr = 1
 	replace educ_req_nbr = 2 if strpos(educ_req, "High school")
-	replace educ_req_nbr = 3 if strpos(educ_req, "Some college")
-	replace educ_req_nbr = 3.5 if strpos(educ_req, "Postsecondary")
+	replace educ_req_nbr = 3 if strpos(educ_req, "Some college") | ///
+	 strpos(educ_req, "Postsecondary")
 	replace educ_req_nbr = 4 if strpos(educ_req, "Associate")
 	replace educ_req_nbr = 5 if strpos(educ_req, "Bachelor")
 	replace educ_req_nbr = 6 if strpos(educ_req, "Master")
@@ -50,9 +50,9 @@ duplicates drop
 tempfile EMPL
 save `EMPL'
 
-*****************************
-*** DEDUPLICATE CROSSWALK ***
-*****************************
+******************************
+*** DEDUPLICATE CROSSWALK  ***
+******************************
 
 ** LOAD DATA **
 import excel using "input/nem-occcode-acs-crosswalk.xlsx", ///
@@ -71,38 +71,55 @@ drop _merge
 bysort occ_acs: gen dup_acs_dum = cond(_N==1,0,1)
 unique occ_acs if dup_acs == 1
 
+** CHECK BLS OCC REQUIREMENTS
+merge m:1 occ_soc using `BLS_REQ'
+	assert _merge == 3
+	drop _merge
+
 preserve
 	keep if dup_acs > 0
+	drop dup_acs
 	gsort occ_soc
 	export delimited "output/xwalk_acs_duplicates.csv", replace
 restore
 
-** ASSIGN HIGHEST EMPLOYMENT SOC CODE TO DUPLICATES **
-bysort occ_acs: egen max_emp = max(tot_emp)
-drop if tot_emp != max_emp
+** KEEP HIGHEST-EMPLOYMENT DUPLICATE BLS OCC BY EDUC REQ ***
+bysort occ_acs educ_req_nbr: egen educ_req_emp = sum(tot_emp)
+gsort occ_acs educ_req_nbr tot_emp
+bysort occ_acs educ_req_nbr: gen n = _n
+	keep if n == 1
+	drop n
+
+** ASSIGN EDUC REQ WITH CLOSEST WEIGHTED AVG EMPLOYMENT DUPLICATES **
+bysort occ_acs: gen n = _n
+bysort occ_acs: egen allocc_emp = sum(educ_req_emp)
+	gen pct = educ_req_emp / allocc_emp
+	gen wgt = pct * n
+bysort occ_acs: egen wtd_avg = sum(wgt)
+	gen diff = abs(n - wtd_avg)
+	drop n
+	
+gsort occ_acs diff
+bysort occ_acs: gen n = _n
+keep if n == 1
 
 ** REMOVE UNNECESSARY VARIABLES **
-drop dup_acs max_emp
+drop dup_acs *_emp pct wgt wtd_avg diff n 
 
 ** SAVE CLEANED CROSSWALK **
+isid occ_acs
 tempfile XWALK
 save `XWALK'
-
-use "../intermediate/ipums_filtered", clear
 
 ****************************
 *** CREATE FINAL DATASET ***
 ****************************
 
+use "../intermediate/ipums_filtered", clear
+
 ** MERGE IN CROSSWALK **
 merge m:1 occ_acs using `XWALK'
 assert _merge == 3
-drop _merge
-
-** MERGE IN BLS EP TABLE 5.4 **
-merge m:1 occ_soc using `BLS_REQ'
-assert _merge!=1
-keep if _merge ==3
 drop _merge
 
 ** CREATE EDUCATION GROUPS BY REQUIREMENT **
