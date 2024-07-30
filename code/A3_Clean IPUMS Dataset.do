@@ -20,11 +20,14 @@ drop if mi(b)
 keep b typicaleduc
 rename (b t) (occ_soc educ_req)
 
+** CLEAN EDUCATION REQUIREMENTS **
+replace educ_req = "Some college/other" if strpos(educ_req, "Some college") | ///
+ strpos(educ_req, "Postsecondary")
+
 ** ASSIGN ORDINAL RANKING TO EDUCATIONAL REQUIREMENTS **
 gen educ_req_nbr = 1
 	replace educ_req_nbr = 2 if strpos(educ_req, "High school")
-	replace educ_req_nbr = 3 if strpos(educ_req, "Some college") | ///
-	 strpos(educ_req, "Postsecondary")
+	replace educ_req_nbr = 3 if educ_req == "Some college/other"
 	replace educ_req_nbr = 4 if strpos(educ_req, "Associate")
 	replace educ_req_nbr = 5 if strpos(educ_req, "Bachelor")
 	replace educ_req_nbr = 6 if strpos(educ_req, "Master")
@@ -121,6 +124,38 @@ use "../intermediate/ipums_filtered", clear
 merge m:1 occ_acs using `XWALK'
 assert _merge == 3
 drop _merge
+
+** CREATE AGE CATEGORIES **
+gen agedum_all = 1
+gen agedum_22_23 = (age < 24)
+gen agedum_22_27 = (age > 21 & age < 28)
+gen agedum_28_33 = (age > 27 & age < 34)
+gen agedum_34_39 = (age > 27 & age < 34)
+gen agedum_40_45 = (age > 39 & age < 46)
+gen agedum_25_54 = (age > 24 & age < 55) 
+gen agedum_25_34 = (age > 24 & age < 35)
+gen agedum_35_44 = (age > 34 & age < 45)
+gen agedum_45_54 = (age > 44 & age < 55)
+gen agedum_55_64 = (age > 54 & age < 65)
+
+** CREATE CLEAN EDUCATION CATEGORIES **
+assert !inlist(educd, 0,1,999)
+
+gen cln_educ_cat = "less_hs"
+	replace cln_ed = "hs" if inlist(educd, 62,63,64)
+	replace cln_ed = "some_college" if inlist(educd, 65,70,71,80,90,100,110,111,112,113)
+	replace cln_ed = "associates" if inlist(educd,81,82,83)
+	replace cln_ed = "bachelors" if educd==101
+	replace cln_ed = "masters" if educd==114
+	replace cln_ed = "doctorate_prof_degree" if inlist(educd,115,116)
+	
+label define educ_cat_lbl 1 less_hs 2 hs 3 some_college 4 associates ///
+ 5  bachelors 6 masters 7 doctorate_prof_degree
+ 
+encode cln_educ_cat, gen(cln_educ_cat_nbr) label(educ_cat_lbl)
+
+** CREATE DUMMY FOR POSTSECONDARY DEGREES **
+gen postsec_degree_dum = (cln_educ_cat_nbr > 4)
 
 ** CREATE EDUCATION GROUPS BY REQUIREMENT **
 gen agg_educ_lvl = "undereduc" if cln_educ_cat_nbr < educ_req_nbr

@@ -60,6 +60,18 @@ preserve
 	keep if `var'==1
 	** DROP UNUSABLE EDUC REQ CATEGORIES **
 	drop if educ_req_nbr == 7
+	
+	/* FIX 22-23 LOW AA PROBLEM */
+	if ("`var'" == "agedum_22_23") {
+	
+	di "`var'"
+		replace agg_educ = "bls_educ" if educ_req_nbr == 4 & ///
+		inlist(cln_educ_cat, "some_college", "associates")
+		
+	} 
+	else {
+		di "`var'"
+	}
 		
 	collapse (p50) med_wage=incwage (mean) avg_wage=incwage [pw = perwt], ///
 	 by(bls occ_soc educ_re* agg_educ ftfy)
@@ -68,6 +80,7 @@ preserve
 	gen age_cat = "`var'"
 	tempfile Occ_`var'
 	save `Occ_`var''
+	
 restore
 }
 
@@ -149,25 +162,14 @@ merge 1:1 bls_occ_title age_cat cln_educ_cat educ_re* ftfy ///
  using "../intermediate/counts_by_occ"
 	assert _merge==3
 	drop _merge
-
-*** CREATE FINAL SUFFICIENCY FLAG ***
-gen int_count = 0
-	replace int_count = n_raw if cln_educ_cat == "bls_educ"
-	bysort age_cat bls_occ_title ft: egen comp_count = max(int_count)
-
-gen int_flag = 0
-	replace int_flag = 1 if mi(educ_req) | educ_req_nbr == 7
-	replace int_flag = 1 if comp_count >= $NFLAG & !mi(comp_count)
 	
-rename suff_flag int_suff_flag
-gen suff_flag = (int_suff_flag == 1 & int_flag == 1)
-
 *** CREATE COMPARISON VALUE FOR PREMIUM CALCULATION ***
 gen int_wage = 0
 	replace int_wage = med_wage if cln_educ_cat == "bls_educ"
 	bysort age_cat bls_occ_title ft: egen comp_wage = max(int_wage)
 	replace comp_wage = . if educ_req_nbr == 7 | mi(educ_req) | ftfy == 0 | ///
 	 suff_flag == 0
+	drop int_wage
 	
 *** BA PREMIUM FLAG ***
 gen ovl_prem_ba = (med_wage > $BA_PREM1 * comp_wage & cln_educ == "bachelors" ///
@@ -179,7 +181,6 @@ gen ovl_prem_ba = (med_wage > $BA_PREM1 * comp_wage & cln_educ == "bachelors" //
 	replace ovl_prem_ba = . if cln_educ != "bachelors" | educ_req_nbr > 4
 
 *** SAVE DATA ***
-drop int_*
 order age_c bls_occ occ_soc educ_req educ_req_n cln_educ n_wtd n_raw suff ///
  comp_count comp_wage med_wage avg_wage ovl_prem_ba
 gsort age_cat cln_educ_cat educ_req_nbr bls

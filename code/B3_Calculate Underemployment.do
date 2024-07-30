@@ -45,7 +45,8 @@ preserve
 		 educ_req_nbr == 2
 		replace underemp = 0 if incwage > $BA_PREM2 * comp_wage & ///
 		 inlist(educ_req_nbr, 3, 4)
-		replace underemp = 0 if educ_req_nbr >= 5 | mi(comp_wage)
+		replace underemp = 0 if educ_req_nbr >= 5 | mi(comp_wage) | ///
+		 ftfy == 0 
 	
 	* Collapse data
 	collapse (sum) underemp, by(bls age_cat cln_educ_cat ftfy)
@@ -87,5 +88,4 @@ gsort -ftfy age_cat cln_educ_cat educ_req_nbr bls
 
 save "../intermediate/underemployment_data", replace
 
-export excel using "output/summary_tables.xlsx", ///
- first(var) sheet("data_by_occ", replace)
+export excel using "$FILE", first(var) sheet("data_by_occ", replace)

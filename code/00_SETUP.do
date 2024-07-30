@@ -27,6 +27,9 @@ cd "$CD"
 ** SET IPUMS DATA DOWNLOAD NAME **
 global IPUMS "usa_00004.dat"
 
+** SET OUTPUT FILE
+global FILE "output/underemployment_analysis.xlsx"
+
 ** CREATE DATASET FOR ANALYSIS **
 do "code/A1_IPUMS Download.do"
 cd "$CD"
@@ -38,4 +41,7 @@ do "code/B1_Occupation Counts by Category.do"
 do "code/B2_Create Categorized Dataset.do"
 do "code/B3_Calculate Underemployment.do"
 
-** TYPICAL RUNTIME: ~28 minutes
+** RUN ANALYSIS **
+do "code/C1_Analyze Underemployment Shares.do"
+
+** TYPICAL RUNTIME: ~38 minutes

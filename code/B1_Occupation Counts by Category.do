@@ -48,7 +48,7 @@ restore
 ** BY AGGREGATE EDUCATION **
 preserve 
 	keep if `var' == 1
-	* Annual counts
+	
 	collapse (sum) n_raw = n n_wtd = perwt, ///
 	 by(bls_occ_title occ_soc educ_re* postsec_deg ftfy)
 	 
@@ -67,7 +67,19 @@ preserve
 	** DROP UNUSABLE EDUC REQ CATEGORIES **
 	drop if educ_req_nbr == 7
 	
-	* Annual counts
+	/* FIX 22-23 LOW AA PROBLEM */
+	if ("`var'" == "agedum_22_23") {
+	
+	di "`var'"
+		replace agg_educ = "bls_educ" if educ_req_nbr == 4 & ///
+		inlist(cln_educ_cat, "some_college", "associates")
+		
+	} 
+	else {
+		di "`var'"
+	}
+	
+	
 	collapse (sum) n_raw = n n_wtd = perwt, ///
 	 by(bls_occ_title occ_soc educ_re* agg_educ ftfy)
 
@@ -88,7 +100,7 @@ foreach var of varlist `AGEDUMS' {
 ** ALL WORKERS **
 preserve 
 	keep if `var' == 1
-	* Annual counts
+	
 	collapse (sum) n_raw = n n_wtd = perwt, by(year ftfy)
 	
 	gen cln_educ_cat = "all_workers"
@@ -102,7 +114,7 @@ restore
 ** BY DETAILED EDUCATION **
 preserve
 	keep if `var' == 1
-	* Annual counts
+	
 	collapse (sum) n_raw = n n_wtd = perwt, by(cln_educ_cat ftfy)
 
 	gen age_cat = "`var'"
@@ -113,7 +125,7 @@ restore
 ** BY AGGREGATE EDUCATION **
 preserve
 	keep if `var' == 1
-	* Annual counts
+	
 	collapse (sum) n_raw = n n_wtd = perwt, by(postsec_deg ftfy)
 
 	gen cln_educ_cat = "BA+" if postsec == 1
@@ -152,7 +164,15 @@ replace age_cat = subinstr(age_cat, "_", "-", .)
 replace age_cat = "all_workers" if age_cat == "all"
 
 ** CREATE FLAG FOR TOO FEW OBSERVATIONS **
-gen suff_flag = (n_raw >= $NFLAG ) 
+gen int_count = 0
+	replace int_count = n_raw if cln_educ_cat == "bls_educ"
+	bysort age_cat bls ftfy: egen comp_count = max(int_count)
+	replace comp_count = 0 if ftfy == 0 | mi(educ_req)
+	
+gen suff_flag = (comp_count >= $NFLAG )
+	replace suff_flag = 1 if educ_req_nbr == 1
+
+drop int_count
 
 ** SAVE DATA **
 order bls_occ occ_soc educ_req educ_req_n age_cat cln_educ_cat n_w n_r suff_flag
