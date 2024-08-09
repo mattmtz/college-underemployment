@@ -79,16 +79,9 @@ merge m:1 occ_soc using `BLS_REQ'
 	assert _merge == 3
 	drop _merge
 
-preserve
-	keep if dup_acs > 0
-	drop dup_acs
-	gsort occ_soc
-	export delimited "output/xwalk_acs_duplicates.csv", replace
-restore
-
 ** KEEP HIGHEST-EMPLOYMENT DUPLICATE BLS OCC BY EDUC REQ ***
 bysort occ_acs educ_req_nbr: egen educ_req_emp = sum(tot_emp)
-gsort occ_acs educ_req_nbr tot_emp
+gsort occ_acs educ_req_nbr -tot_emp
 bysort occ_acs educ_req_nbr: gen n = _n
 	keep if n == 1
 	drop n
@@ -102,6 +95,22 @@ bysort occ_acs: egen wtd_avg = sum(wgt)
 	gen diff = abs(n - wtd_avg)
 	drop n
 	
+** EXPORT DUPLICATES TO EXCEL **
+preserve
+	drop if pct == 1
+	unique occ_acs
+	drop educ_req wgt wtd_avg diff dup_acs tot_emp
+	order occ_acs acs_occ_t occ_soc bls_occ_title educ_req_n educ_req_e ///
+	allocc_emp pct
+	
+	bysort occ_acs: egen maxpct = max(pct)	
+		gsort maxpct occ_acs -pct
+		drop maxpct
+	
+	export delimited "output/xwalk_acs_duplicates.csv", replace
+restore
+
+** REMOVE UNECCESARY BLS OCCUPATIONS **
 gsort occ_acs diff
 bysort occ_acs: gen n = _n
 keep if n == 1

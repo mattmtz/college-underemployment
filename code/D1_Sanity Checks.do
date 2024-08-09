@@ -19,7 +19,10 @@ drop agedum*
 preserve
 	keep if agg_educ_lvl == "bls_educ"
 	gen n = 1
-	collapse (sum) n (p50) comp_wage = incwage [pw = perwt], ///
+	bysort bls_occ: egen suff_count = sum(n)
+	drop if suff_count < $NFLAG
+	
+	collapse (p50) comp_wage = incwage [pw = perwt], ///
 	 by(bls_occ educ_re* occ_soc)
 
 	tempfile MEDWAGE
@@ -27,9 +30,6 @@ preserve
 restore
 
 merge m:1 bls_occ educ_re* occ_soc using `MEDWAGE'
-	assert _merge == 3
-	assert n >= $NFLAG
-	drop n _merge
 
 ** CALCULATE BA OVEREDUC BY DEFINITION **
 keep if cln_educ_cat == "bachelors"
@@ -41,17 +41,14 @@ gen underemp = 0
 	replace underemp = perwt if educ_req_nbr == 1
 	replace underemp = perwt if educ_req_nbr == 2 & ///
 	 incwage <= $BA_PREM1 * comp_wage
-	replace underemp = perwt if inlist(educ_req_nbr, 3, 3.5, 4) & ///
+	replace underemp = perwt if inlist(educ_req_nbr, 3, 4) & ///
 	 incwage <= $BA_PREM2 * comp_wage
 	replace underemp = 0 if mi(comp_wage)
 
-	
 ** COLLAPSE DATA **
-gen n_raw = 1
 gen n_cln = perwt
-collapse (sum) n_raw n_cln perwt underem*, by(bls_occ educ_re*)
-	replace underemp = 0 if n_raw < $NFLAG
-	replace n_cln = 0 if n_raw < $NFLAG
+	replace n_cln = 0 if mi(comp_wage)
+collapse (sum) n_cln perwt underem*, by(bls_occ occ_soc educ_re*)
 
 ** CALCULATE SHARES **
 collapse (sum) n_cln perwt underem*

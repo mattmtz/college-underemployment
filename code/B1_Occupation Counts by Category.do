@@ -170,7 +170,7 @@ gen int_count = 0
 	replace comp_count = 0 if ftfy == 0 | mi(educ_req)
 	
 gen suff_flag = (comp_count >= $NFLAG )
-	replace suff_flag = 1 if educ_req_nbr == 1
+	replace suff_flag = 1 if educ_req_nbr == 1 | educ_req_nbr >= 5
 
 drop int_count
 

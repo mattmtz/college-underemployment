@@ -36,7 +36,7 @@ preserve
 restore
 
 gen rank = _n
-keep if rank < 6
+*keep if rank < 6
 
 gen age_cat = "25-54"
 keep age_cat bls_occ ba_hs_diff rank
@@ -57,13 +57,22 @@ gen educ_group = cln_educ_cat
 	 strpos(cln_educ_cat, "doct")
 	replace educ_group = "aa_other" if inlist(cln_educ_cat, "some_college", ///
 	 "associates")
-
-collapse (sum) perwt, by(bls rank occ_soc educ_req educ_group)
+	 
+gen n_educ_group = 1
+	replace n_educ_group = 2 if inlist(cln_educ_cat, "some_college", "associates")
+	replace n_educ_group = 3 if cln_educ_cat == "bachelors"
+	replace n_educ_group = 4 if cln_educ_cat == "masters" | strpos(cln_educ_cat, "doct")
+	
+collapse (sum) perwt, by(bls rank occ_soc educ_req educ_group n_educ_group)
 
 bysort bls: egen tot = sum(perwt)
 	gen pct = perwt / tot
 	
 *** EXPORT DATA ***
 order rank bls occ educ_req educ_group tot perwt pct
-gsort rank bls educ_group
-export excel using "$FILE", first(var) sheet("fig3_raw", replace)
+gsort rank n_educ_group
+drop n_educ_group
+export excel using "output/full_BA_shares_in_HS_occs.xlsx", first(var) replace
+
+keep if rank <6
+export excel using "$FILE", first(var) sheet("fig4_raw", replace)

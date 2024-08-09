@@ -43,5 +43,6 @@ do "code/B3_Calculate Underemployment.do"
 
 ** RUN ANALYSIS **
 do "code/C1_Analyze Underemployment Shares.do"
+do "code/C2_Analyze Occupational Education Distributions.do"
 
 ** TYPICAL RUNTIME: ~38 minutes

@@ -62,7 +62,7 @@ gen pct_underemp = underemp / n_suff
 keep below_ba pct*
 order below pct_underemp_bls pct_underemp
 	
-export excel using "$FILE", first(var) sheet("fig2_raw", replace)
+export excel using "$FILE", first(var) sheet("fig3_raw", replace)
 
 ***************************
 *** CREATE TABLE 1 DATA ***

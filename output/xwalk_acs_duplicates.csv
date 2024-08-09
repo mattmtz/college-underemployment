@@ -1,457 +1,130 @@
-occ_soc,bls_occ_title,occ_acs,acs_occ_title,tot_emp,educ_req,educ_req_nbr
-11-1011,Chief executives,10,Chief executives and legislators,211230,Bachelor's degree,5
-11-1031,Legislators,10,Chief executives and legislators,32460,Bachelor's degree,5
-11-2032,Public relations managers,60,Public relations and fundraising managers,72760,Bachelor's degree,5
-11-2033,Fundraising managers,60,Public relations and fundraising managers,31810,Bachelor's degree,5
-11-9031,"Education and childcare administrators, preschool and daycare",230,Education and childcare administrators,64090,Bachelor's degree,5
-11-9032,"Education administrators, kindergarten through secondary",230,Education and childcare administrators,302580,Master's degree,6
-11-9033,"Education administrators, postsecondary",230,Education and childcare administrators,167270,Master's degree,6
-11-9039,"Education administrators, all other",230,Education and childcare administrators,50690,Bachelor's degree,5
-11-9071,Gambling managers,335,Entertainment and recreation managers,4590,High school diploma or equivalent,2
-11-9072,"Entertainment and recreation managers, except gambling",335,Entertainment and recreation managers,29690,Bachelor's degree,5
-11-9131,Postmasters and mail superintendents,440,Other managers,13810,High school diploma or equivalent,2
-11-9171,Funeral home managers,440,Other managers,14200,Associate's degree,4
-11-9179,"Personal service managers, all other",440,Other managers,11170,High school diploma or equivalent,2
-11-9199,"Managers, all other",440,Other managers,589750,Bachelor's degree,5
-13-1031,"Claims adjusters, examiners, and investigators",540,"Claims adjusters, appraisers, examiners, and investigators",293780,High school diploma or equivalent,2
-13-1032,"Insurance appraisers, auto damage",540,"Claims adjusters, appraisers, examiners, and investigators",8670,Some college/other,3
-13-1071,Human resources specialists,630,Human resources workers,895970,Bachelor's degree,5
-13-1074,Farm labor contractors,630,Human resources workers,460,No formal educational credential,1
-13-1075,Labor relations specialists,630,Human resources workers,62800,Bachelor's degree,5
-13-2054,Financial risk specialists,960,Other financial specialists,55290,Bachelor's degree,5
-13-2071,Credit counselors,910,Credit counselors and loan officers,27950,Bachelor's degree,5
-13-2072,Loan officers,910,Credit counselors and loan officers,321090,Bachelor's degree,5
-13-2099,"Financial specialists, all other",960,Other financial specialists,122730,Bachelor's degree,5
-15-1231,Computer network support specialists,1050,Computer support specialists,158720,Associate's degree,4
-15-1232,Computer user support specialists,1050,Computer support specialists,689700,Some college/other,3
-15-1242,Database administrators,1065,Database administrators and architects,76140,Bachelor's degree,5
-15-1243,Database architects,1065,Database administrators and architects,59920,Bachelor's degree,5
-15-2021,Mathematicians,1240,Other mathematical science occupations,2220,Master's degree,6
-15-2041,Statisticians,1240,Other mathematical science occupations,29950,Master's degree,6
-15-2051,Data scientists,1240,Other mathematical science occupations,192710,Bachelor's degree,5
-15-2099,"Mathematical science occupations, all other",1240,Other mathematical science occupations,4320,Bachelor's degree,5
-17-1021,Cartographers and photogrammetrists,1310,"Surveyors, cartographers, and photogrammetrists",12330,Bachelor's degree,5
-17-1022,Surveyors,1310,"Surveyors, cartographers, and photogrammetrists",50740,Bachelor's degree,5
-17-2021,Agricultural engineers,1340,Biomedical and agricultural engineers,1860,Bachelor's degree,5
-17-2031,Bioengineers and biomedical engineers,1340,Biomedical and agricultural engineers,19320,Bachelor's degree,5
-17-2071,Electrical engineers,1410,Electrical and electronics engineers,185430,Bachelor's degree,5
-17-2072,"Electronics engineers, except computer",1410,Electrical and electronics engineers,96410,Bachelor's degree,5
-17-2111,"Health and safety engineers, except mining safety engineers and inspectors",1430,"Industrial engineers, including health and safety",22510,Bachelor's degree,5
-17-2112,Industrial engineers,1430,"Industrial engineers, including health and safety",332870,Bachelor's degree,5
-17-2151,"Mining and geological engineers, including mining safety engineers",1520,"Petroleum, mining and geological engineers, including mining safety engineers",7040,Bachelor's degree,5
-17-2161,Nuclear engineers,1530,Other engineers,12710,Bachelor's degree,5
-17-2171,Petroleum engineers,1520,"Petroleum, mining and geological engineers, including mining safety engineers",20390,Bachelor's degree,5
-17-2199,"Engineers, all other",1530,Other engineers,150990,Bachelor's degree,5
-17-3012,Electrical and electronics drafters,1545,Other drafters,20680,Associate's degree,4
-17-3013,Mechanical drafters,1545,Other drafters,44850,Associate's degree,4
-17-3019,"Drafters, all other",1545,Other drafters,16580,Associate's degree,4
-17-3021,Aerospace engineering and operations technologists and technicians,1555,"Other engineering technologists and technicians, except drafters",10640,Associate's degree,4
-17-3022,Civil engineering technologists and technicians,1555,"Other engineering technologists and technicians, except drafters",63560,Associate's degree,4
-17-3024,Electro-mechanical and mechatronics technologists and technicians,1555,"Other engineering technologists and technicians, except drafters",15360,Associate's degree,4
-17-3025,Environmental engineering technologists and technicians,1555,"Other engineering technologists and technicians, except drafters",13780,Associate's degree,4
-17-3026,Industrial engineering technologists and technicians,1555,"Other engineering technologists and technicians, except drafters",73020,Associate's degree,4
-17-3027,Mechanical engineering technologists and technicians,1555,"Other engineering technologists and technicians, except drafters",38930,Associate's degree,4
-17-3028,Calibration technologists and technicians,1555,"Other engineering technologists and technicians, except drafters",13220,Associate's degree,4
-17-3029,"Engineering technologists and technicians, except drafters, all other",1555,"Other engineering technologists and technicians, except drafters",66200,Associate's degree,4
-19-1011,Animal scientists,1600,Agricultural and food scientists,2460,Bachelor's degree,5
-19-1012,Food scientists and technologists,1600,Agricultural and food scientists,14100,Bachelor's degree,5
-19-1013,Soil and plant scientists,1600,Agricultural and food scientists,15800,Bachelor's degree,5
-19-1021,Biochemists and biophysicists,1610,Biological scientists,33180,Doctoral or professional degree,7
-19-1022,Microbiologists,1610,Biological scientists,21540,Bachelor's degree,5
-19-1023,Zoologists and wildlife biologists,1610,Biological scientists,17100,Bachelor's degree,5
-19-1029,"Biological scientists, all other",1610,Biological scientists,61220,Bachelor's degree,5
-19-1031,Conservation scientists,1640,Conservation scientists and foresters,22790,Bachelor's degree,5
-19-1032,Foresters,1640,Conservation scientists and foresters,9450,Bachelor's degree,5
-19-1041,Epidemiologists,1650,Other life scientists,10230,Master's degree,6
-19-1042,"Medical scientists, except epidemiologists",1650,Other life scientists,136620,Doctoral or professional degree,7
-19-1099,"Life scientists, all other",1650,Other life scientists,7490,Bachelor's degree,5
-19-2011,Astronomers,1700,Astronomers and physicists,2080,Doctoral or professional degree,7
-19-2012,Physicists,1700,Astronomers and physicists,18350,Doctoral or professional degree,7
-19-2031,Chemists,1720,Chemists and materials scientists,83530,Bachelor's degree,5
-19-2032,Materials scientists,1720,Chemists and materials scientists,8810,Bachelor's degree,5
-19-2042,"Geoscientists, except hydrologists and geographers",1750,"Geoscientists and hydrologists, except geographers",24620,Bachelor's degree,5
-19-2043,Hydrologists,1750,"Geoscientists and hydrologists, except geographers",6150,Bachelor's degree,5
-19-3022,Survey researchers,1860,Other social scientists,8190,Master's degree,6
-19-3032,Industrial-organizational psychologists,1825,Other psychologists,1030,Master's degree,6
-19-3039,"Psychologists, all other",1825,Other psychologists,14480,Master's degree,6
-19-3041,Sociologists,1860,Other social scientists,2890,Master's degree,6
-19-3091,Anthropologists and archeologists,1860,Other social scientists,7720,Master's degree,6
-19-3092,Geographers,1860,Other social scientists,1460,Bachelor's degree,5
-19-3093,Historians,1860,Other social scientists,3040,Master's degree,6
-19-3094,Political scientists,1860,Other social scientists,5580,Master's degree,6
-19-3099,"Social scientists and related workers, all other",1860,Other social scientists,35210,Bachelor's degree,5
-19-4012,Agricultural technicians,1900,Agricultural and food science technicians,13150,Associate's degree,4
-19-4013,Food science technicians,1900,Agricultural and food science technicians,15190,Associate's degree,4
-19-4042,"Environmental science and protection technicians, including health",1935,"Environmental science and geoscience technicians, and nuclear technicians",32390,Associate's degree,4
-19-4043,"Geological technicians, except hydrologic technicians",1935,"Environmental science and geoscience technicians, and nuclear technicians",8860,Associate's degree,4
-19-4044,Hydrologic technicians,1935,"Environmental science and geoscience technicians, and nuclear technicians",3000,Associate's degree,4
-19-4051,Nuclear technicians,1935,"Environmental science and geoscience technicians, and nuclear technicians",5400,Associate's degree,4
-19-4061,Social science research assistants,1970,"Other life, physical, and social science technicians",30890,Bachelor's degree,5
-19-4071,Forest and conservation technicians,1970,"Other life, physical, and social science technicians",28740,Associate's degree,4
-19-4092,Forensic science technicians,1970,"Other life, physical, and social science technicians",17520,Bachelor's degree,5
-19-4099,"Life, physical, and social science technicians, all other",1970,"Other life, physical, and social science technicians",72230,Associate's degree,4
-19-5011,Occupational health and safety specialists,1980,Occupational health and safety specialists and technicians,122300,Bachelor's degree,5
-19-5012,Occupational health and safety technicians,1980,Occupational health and safety specialists and technicians,27270,High school diploma or equivalent,2
-21-1091,Health education specialists,2025,Other community and social service specialists,57800,Bachelor's degree,5
-21-1094,Community health workers,2025,Other community and social service specialists,58550,High school diploma or equivalent,2
-21-1099,"Community and social service specialists, all other",2025,Other community and social service specialists,95310,Bachelor's degree,5
-23-1011,Lawyers,2100,"Lawyers, and judges, magistrates, and other judicial workers",731340,Doctoral or professional degree,7
-23-1021,"Administrative law judges, adjudicators, and hearing officers",2100,"Lawyers, and judges, magistrates, and other judicial workers",14670,Doctoral or professional degree,7
-23-1022,"Arbitrators, mediators, and conciliators",2100,"Lawyers, and judges, magistrates, and other judicial workers",7060,Bachelor's degree,5
-23-1023,"Judges, magistrate judges, and magistrates",2100,"Lawyers, and judges, magistrates, and other judicial workers",24470,Doctoral or professional degree,7
-25-1011,"Business teachers, postsecondary",2205,Postsecondary teachers,82980,Doctoral or professional degree,7
-25-1021,"Computer science teachers, postsecondary",2205,Postsecondary teachers,36150,Doctoral or professional degree,7
-25-1022,"Mathematical science teachers, postsecondary",2205,Postsecondary teachers,48230,Doctoral or professional degree,7
-25-1031,"Architecture teachers, postsecondary",2205,Postsecondary teachers,8350,Doctoral or professional degree,7
-25-1032,"Engineering teachers, postsecondary",2205,Postsecondary teachers,38370,Doctoral or professional degree,7
-25-1041,"Agricultural sciences teachers, postsecondary",2205,Postsecondary teachers,7550,Doctoral or professional degree,7
-25-1042,"Biological science teachers, postsecondary",2205,Postsecondary teachers,52050,Doctoral or professional degree,7
-25-1043,"Forestry and conservation science teachers, postsecondary",2205,Postsecondary teachers,1260,Doctoral or professional degree,7
-25-1051,"Atmospheric, earth, marine, and space sciences teachers, postsecondary",2205,Postsecondary teachers,11770,Doctoral or professional degree,7
-25-1052,"Chemistry teachers, postsecondary",2205,Postsecondary teachers,20210,Doctoral or professional degree,7
-25-1053,"Environmental science teachers, postsecondary",2205,Postsecondary teachers,7120,Doctoral or professional degree,7
-25-1054,"Physics teachers, postsecondary",2205,Postsecondary teachers,14030,Doctoral or professional degree,7
-25-1061,"Anthropology and archeology teachers, postsecondary",2205,Postsecondary teachers,5030,Doctoral or professional degree,7
-25-1062,"Area, ethnic, and cultural studies teachers, postsecondary",2205,Postsecondary teachers,11570,Doctoral or professional degree,7
-25-1063,"Economics teachers, postsecondary",2205,Postsecondary teachers,12210,Doctoral or professional degree,7
-25-1064,"Geography teachers, postsecondary",2205,Postsecondary teachers,3480,Doctoral or professional degree,7
-25-1065,"Political science teachers, postsecondary",2205,Postsecondary teachers,17090,Doctoral or professional degree,7
-25-1066,"Psychology teachers, postsecondary",2205,Postsecondary teachers,40610,Doctoral or professional degree,7
-25-1067,"Sociology teachers, postsecondary",2205,Postsecondary teachers,12870,Doctoral or professional degree,7
-25-1069,"Social sciences teachers, postsecondary, all other",2205,Postsecondary teachers,16900,Doctoral or professional degree,7
-25-1071,"Health specialties teachers, postsecondary",2205,Postsecondary teachers,225360,Doctoral or professional degree,7
-25-1072,"Nursing instructors and teachers, postsecondary",2205,Postsecondary teachers,72700,Doctoral or professional degree,7
-25-1081,"Education teachers, postsecondary",2205,Postsecondary teachers,60860,Doctoral or professional degree,7
-25-1082,"Library science teachers, postsecondary",2205,Postsecondary teachers,4220,Doctoral or professional degree,7
-25-1111,"Criminal justice and law enforcement teachers, postsecondary",2205,Postsecondary teachers,13390,Doctoral or professional degree,7
-25-1112,"Law teachers, postsecondary",2205,Postsecondary teachers,14570,Doctoral or professional degree,7
-25-1113,"Social work teachers, postsecondary",2205,Postsecondary teachers,11730,Doctoral or professional degree,7
-25-1121,"Art, drama, and music teachers, postsecondary",2205,Postsecondary teachers,101500,Master's degree,6
-25-1122,"Communications teachers, postsecondary",2205,Postsecondary teachers,28520,Doctoral or professional degree,7
-25-1123,"English language and literature teachers, postsecondary",2205,Postsecondary teachers,57600,Doctoral or professional degree,7
-25-1124,"Foreign language and literature teachers, postsecondary",2205,Postsecondary teachers,20820,Doctoral or professional degree,7
-25-1125,"History teachers, postsecondary",2205,Postsecondary teachers,20610,Doctoral or professional degree,7
-25-1126,"Philosophy and religion teachers, postsecondary",2205,Postsecondary teachers,20320,Doctoral or professional degree,7
-25-1192,"Family and consumer sciences teachers, postsecondary",2205,Postsecondary teachers,2660,Doctoral or professional degree,7
-25-1193,"Recreation and fitness studies teachers, postsecondary",2205,Postsecondary teachers,13270,Doctoral or professional degree,7
-25-1194,"Career/technical education teachers, postsecondary",2205,Postsecondary teachers,111180,Bachelor's degree,5
-25-1199,"Postsecondary teachers, all other",2205,Postsecondary teachers,166980,Doctoral or professional degree,7
-25-2011,"Preschool teachers, except special education",2300,Preschool and kindergarten teachers,430240,Associate's degree,4
-25-2012,"Kindergarten teachers, except special education",2300,Preschool and kindergarten teachers,118580,Bachelor's degree,5
-25-2021,"Elementary school teachers, except special education",2310,Elementary and middle school teachers,1410070,Bachelor's degree,5
-25-2022,"Middle school teachers, except special and career/technical education",2310,Elementary and middle school teachers,626690,Bachelor's degree,5
-25-2023,"Career/technical education teachers, middle school",2310,Elementary and middle school teachers,12210,Bachelor's degree,5
-25-2031,"Secondary school teachers, except special and career/technical education",2320,Secondary school teachers,1045170,Bachelor's degree,5
-25-2032,"Career/technical education teachers, secondary school",2320,Secondary school teachers,90070,Bachelor's degree,5
-25-2051,"Special education teachers, preschool",2330,Special education teachers,24850,Bachelor's degree,5
-25-2052,"Special education teachers, kindergarten and elementary school",2330,Special education teachers,212850,Bachelor's degree,5
-25-2057,"Special education teachers, middle school",2330,Special education teachers,88850,Bachelor's degree,5
-25-2058,"Special education teachers, secondary school",2330,Special education teachers,158150,Bachelor's degree,5
-25-2059,"Special education teachers, all other",2330,Special education teachers,43700,Bachelor's degree,5
-25-3011,"Adult basic education, adult secondary education, and english as a second language instructors",2360,Other teachers and instructors,36890,Bachelor's degree,5
-25-3021,Self-enrichment teachers,2360,Other teachers and instructors,272110,High school diploma or equivalent,2
-25-3031,"Substitute teachers, short-term",2360,Other teachers and instructors,444530,Bachelor's degree,5
-25-3099,"Teachers and instructors, all other",2360,Other teachers and instructors,118290,Bachelor's degree,5
-25-4011,Archivists,2400,"Archivists, curators, and museum technicians",7150,Master's degree,6
-25-4012,Curators,2400,"Archivists, curators, and museum technicians",12510,Master's degree,6
-25-4013,Museum technicians and conservators,2400,"Archivists, curators, and museum technicians",12670,Bachelor's degree,5
-25-9021,Farm and home management educators,2555,Other educational instruction and library workers,8110,Master's degree,6
-25-9031,Instructional coordinators,2555,Other educational instruction and library workers,207270,Master's degree,6
-25-9044,"Teaching assistants, postsecondary",2545,Teaching assistants,145960,Bachelor's degree,5
-25-9045,"Teaching assistants, except postsecondary",2545,Teaching assistants,1337320,Some college/other,3
-25-9099,"Educational instruction and library workers, all other",2555,Other educational instruction and library workers,113490,Bachelor's degree,5
-27-1011,Art directors,2600,Artists and related workers,51200,Bachelor's degree,5
-27-1012,Craft artists,2600,Artists and related workers,5830,No formal educational credential,1
-27-1013,"Fine artists, including painters, sculptors, and illustrators",2600,Artists and related workers,10910,Bachelor's degree,5
-27-1014,Special effects artists and animators,2600,Artists and related workers,29940,Bachelor's degree,5
-27-1019,"Artists and related workers, all other",2600,Artists and related workers,7420,No formal educational credential,1
-27-1027,Set and exhibit designers,2640,Other designers,10090,Bachelor's degree,5
-27-1029,"Designers, all other",2640,Other designers,9880,Bachelor's degree,5
-27-2031,Dancers,2740,Dancers and choreographers,11510,No formal educational credential,1
-27-2032,Choreographers,2740,Dancers and choreographers,4190,High school diploma or equivalent,2
-27-4011,Audio and video technicians,2905,Other media and communication equipment workers,66700,Some college/other,3
-27-4012,Broadcast technicians,2905,Other media and communication equipment workers,26190,Associate's degree,4
-27-4014,Sound engineering technicians,2905,Other media and communication equipment workers,14600,Some college/other,3
-27-4015,Lighting technicians,2905,Other media and communication equipment workers,9520,Some college/other,3
-27-4031,"Camera operators, television, video, and film",2920,"Television, video, and film camera operators and editors",23940,Bachelor's degree,5
-27-4032,Film and video editors,2920,"Television, video, and film camera operators and editors",29240,Bachelor's degree,5
-27-4099,"Media and communication equipment workers, all other",2905,Other media and communication equipment workers,11430,High school diploma or equivalent,2
-29-1021,"Dentists, general",3010,Dentists,121640,Doctoral or professional degree,7
-29-1022,Oral and maxillofacial surgeons,3010,Dentists,4160,Doctoral or professional degree,7
-29-1023,Orthodontists,3010,Dentists,6400,Doctoral or professional degree,7
-29-1024,Prosthodontists,3010,Dentists,570,Doctoral or professional degree,7
-29-1029,"Dentists, all other specialists",3010,Dentists,5920,Doctoral or professional degree,7
-29-1128,Exercise physiologists,3245,Other therapists,8060,Bachelor's degree,5
-29-1129,"Therapists, all other",3245,Other therapists,16490,Bachelor's degree,5
-29-1161,Nurse midwives,3258,"Nurse practitioners, and nurse midwives",6960,Master's degree,6
-29-1171,Nurse practitioners,3258,"Nurse practitioners, and nurse midwives",280140,Master's degree,6
-29-1211,Anesthesiologists,3090,Physicians,33470,Doctoral or professional degree,7
-29-1212,Cardiologists,3090,Physicians,15190,Doctoral or professional degree,7
-29-1213,Dermatologists,3090,Physicians,12040,Doctoral or professional degree,7
-29-1214,Emergency medicine physicians,3090,Physicians,35100,Doctoral or professional degree,7
-29-1215,Family medicine physicians,3090,Physicians,112010,Doctoral or professional degree,7
-29-1216,General internal medicine physicians,3090,Physicians,67210,Doctoral or professional degree,7
-29-1217,Neurologists,3090,Physicians,9350,Doctoral or professional degree,7
-29-1218,Obstetricians and gynecologists,3090,Physicians,19820,Doctoral or professional degree,7
-29-1221,"Pediatricians, general",3090,Physicians,34870,Doctoral or professional degree,7
-29-1222,"Physicians, pathologists",3090,Physicians,11020,Doctoral or professional degree,7
-29-1223,Psychiatrists,3090,Physicians,24830,Doctoral or professional degree,7
-29-1224,Radiologists,3090,Physicians,31960,Doctoral or professional degree,7
-29-1229,"Physicians, all other",3090,Physicians,310080,Doctoral or professional degree,7
-29-1241,"Ophthalmologists, except pediatric",3100,Surgeons,11530,Doctoral or professional degree,7
-29-1242,"Orthopedic surgeons, except pediatric",3100,Surgeons,14820,Doctoral or professional degree,7
-29-1243,Pediatric surgeons,3100,Surgeons,1180,Doctoral or professional degree,7
-29-1249,"Surgeons, all other",3100,Surgeons,26370,Doctoral or professional degree,7
-29-2033,Nuclear medicine technologists,3330,Nuclear medicine technologists and medical dosimetrists,16560,Associate's degree,4
-29-2036,Medical dosimetrists,3330,Nuclear medicine technologists and medical dosimetrists,3900,Bachelor's degree,5
-29-2051,Dietetic technicians,3430,Dietetic technicians and ophthalmic medical technicians,24240,Associate's degree,4
-29-2057,Ophthalmic medical technicians,3430,Dietetic technicians and ophthalmic medical technicians,73390,Some college/other,3
-29-2091,Orthotists and prosthetists,3545,Miscellaneous health technologists and technicians,8820,Master's degree,6
-29-2092,Hearing aid specialists,3545,Miscellaneous health technologists and technicians,10250,High school diploma or equivalent,2
-29-2099,"Health technologists and technicians, all other",3545,Miscellaneous health technologists and technicians,171110,Some college/other,3
-29-9021,Health information technologists and medical registrars,3550,Other healthcare practitioners and technical occupations,34430,Associate's degree,4
-29-9091,Athletic trainers,3550,Other healthcare practitioners and technical occupations,28480,Master's degree,6
-29-9092,Genetic counselors,3550,Other healthcare practitioners and technical occupations,3050,Master's degree,6
-29-9093,Surgical assistants,3550,Other healthcare practitioners and technical occupations,18780,Some college/other,3
-29-9099,"Healthcare practitioners and technical workers, all other",3550,Other healthcare practitioners and technical occupations,36900,Some college/other,3
-31-1132,Orderlies,3605,Orderlies and psychiatric aides,48710,High school diploma or equivalent,2
-31-1133,Psychiatric aides,3605,Orderlies and psychiatric aides,32310,High school diploma or equivalent,2
-31-2011,Occupational therapy assistants,3610,Occupational therapy assistants and aides,46090,Associate's degree,4
-31-2012,Occupational therapy aides,3610,Occupational therapy assistants and aides,4430,High school diploma or equivalent,2
-31-2021,Physical therapist assistants,3620,Physical therapist assistants and aides,104000,Associate's degree,4
-31-2022,Physical therapist aides,3620,Physical therapist assistants and aides,42390,High school diploma or equivalent,2
-31-9093,Medical equipment preparers,3655,Other healthcare support workers,66790,High school diploma or equivalent,2
-31-9099,"Healthcare support workers, all other",3655,Other healthcare support workers,102230,High school diploma or equivalent,2
-33-1091,First-line supervisors of security workers,3725,"Miscellaneous first-line supervisors, protective service workers",64900,High school diploma or equivalent,2
-33-1099,"First-line supervisors of protective service workers, all other",3725,"Miscellaneous first-line supervisors, protective service workers",19620,High school diploma or equivalent,2
-33-2021,Fire inspectors and investigators,3750,Fire inspectors,14200,Some college/other,3
-33-2022,Forest fire inspectors and prevention specialists,3750,Fire inspectors,2270,High school diploma or equivalent,2
-33-3031,Fish and game wardens,3840,Fish and game wardens and parking enforcement officers,6290,Bachelor's degree,5
-33-3041,Parking enforcement workers,3840,Fish and game wardens and parking enforcement officers,7420,High school diploma or equivalent,2
-33-3051,Police and sheriff's patrol officers,3870,Police officers,646310,High school diploma or equivalent,2
-33-3052,Transit and railroad police,3870,Police officers,2360,High school diploma or equivalent,2
-33-9031,Gambling surveillance officers and gambling investigators,3930,Security guards and gambling surveillance officers,10660,High school diploma or equivalent,2
-33-9032,Security guards,3930,Security guards and gambling surveillance officers,1202940,High school diploma or equivalent,2
-33-9092,"Lifeguards, ski patrol, and other recreational protective service workers",3960,Other protective service workers,123560,No formal educational credential,1
-33-9099,"Protective service workers, all other",3960,Other protective service workers,82500,High school diploma or equivalent,2
-35-2011,"Cooks, fast food",4020,Cooks,673490,No formal educational credential,1
-35-2012,"Cooks, institution and cafeteria",4020,Cooks,435640,No formal educational credential,1
-35-2013,"Cooks, private household",4020,Cooks,740,Some college/other,3
-35-2014,"Cooks, restaurant",4020,Cooks,1412350,No formal educational credential,1
-35-2015,"Cooks, short order",4020,Cooks,126370,No formal educational credential,1
-35-2019,"Cooks, all other",4020,Cooks,18650,No formal educational credential,1
-37-2011,"Janitors and cleaners, except maids and housekeeping cleaners",4220,Janitors and building cleaners,2172500,No formal educational credential,1
-37-2019,"Building cleaning workers, all other",4220,Janitors and building cleaners,13740,No formal educational credential,1
-37-3012,"Pesticide handlers, sprayers, and applicators, vegetation",4255,Other grounds maintenance workers,23520,High school diploma or equivalent,2
-37-3019,"Grounds maintenance workers, all other",4255,Other grounds maintenance workers,11980,No formal educational credential,1
-39-1013,First-line supervisors of gambling services workers,4330,Supervisors of personal care and service workers,25100,High school diploma or equivalent,2
-39-1014,"First-line supervisors of entertainment and recreation workers, except gambling services",4330,Supervisors of personal care and service workers,88140,High school diploma or equivalent,2
-39-1022,First-line supervisors of personal service workers,4330,Supervisors of personal care and service workers,106440,High school diploma or equivalent,2
-39-3011,Gambling dealers,4400,Gambling services workers,80570,High school diploma or equivalent,2
-39-3012,Gambling and sports book writers and runners,4400,Gambling services workers,8700,High school diploma or equivalent,2
-39-3019,"Gambling service workers, all other",4400,Gambling services workers,13300,High school diploma or equivalent,2
-39-3021,Motion picture projectionists,4435,Other entertainment attendants and related workers,2610,No formal educational credential,1
-39-3091,Amusement and recreation attendants,4435,Other entertainment attendants and related workers,361680,No formal educational credential,1
-39-3092,Costume attendants,4435,Other entertainment attendants and related workers,6300,High school diploma or equivalent,2
-39-3093,"Locker room, coatroom, and dressing room attendants",4435,Other entertainment attendants and related workers,14720,High school diploma or equivalent,2
-39-3099,"Entertainment attendants and related workers, all other",4435,Other entertainment attendants and related workers,7320,High school diploma or equivalent,2
-39-4011,Embalmers,4461,"Embalmers, crematory operators and funeral attendants",3380,Associate's degree,4
-39-4012,Crematory operators,4461,"Embalmers, crematory operators and funeral attendants",3220,High school diploma or equivalent,2
-39-4021,Funeral attendants,4461,"Embalmers, crematory operators and funeral attendants",32620,High school diploma or equivalent,2
-39-5091,"Makeup artists, theatrical and performance",4525,Other personal appearance workers,4130,Some college/other,3
-39-5093,Shampooers,4525,Other personal appearance workers,7360,No formal educational credential,1
-39-6011,Baggage porters and bellhops,4530,"Baggage porters, bellhops, and concierges",28780,High school diploma or equivalent,2
-39-6012,Concierges,4530,"Baggage porters, bellhops, and concierges",41020,High school diploma or equivalent,2
-41-2011,Cashiers,4720,Cashiers,3298660,No formal educational credential,1
-41-2012,Gambling change persons and booth cashiers,4720,Cashiers,20560,No formal educational credential,1
-41-4011,"Sales representatives, wholesale and manufacturing, technical and scientific products",4850,"Sales representatives, wholesale and manufacturing",311780,Bachelor's degree,5
-41-4012,"Sales representatives, wholesale and manufacturing, except technical and scientific products",4850,"Sales representatives, wholesale and manufacturing",1288920,High school diploma or equivalent,2
-41-9011,Demonstrators and product promoters,4900,"Models, demonstrators, and product promoters",50790,No formal educational credential,1
-41-9012,Models,4900,"Models, demonstrators, and product promoters",3090,No formal educational credential,1
-41-9021,Real estate brokers,4920,Real estate brokers and sales agents,51350,High school diploma or equivalent,2
-41-9022,Real estate sales agents,4920,Real estate brokers and sales agents,197720,High school diploma or equivalent,2
-43-3041,Gambling cage workers,5165,Other financial clerks,12560,High school diploma or equivalent,2
-43-3099,"Financial clerks, all other",5165,Other financial clerks,44520,High school diploma or equivalent,2
-43-4011,Brokerage clerks,5420,Other information and records clerks,48060,High school diploma or equivalent,2
-43-4021,Correspondence clerks,5350,Correspondence clerks and order clerks,4650,High school diploma or equivalent,2
-43-4151,Order clerks,5350,Correspondence clerks and order clerks,91830,Some college/other,3
-43-4199,"Information and record clerks, all other",5420,Other information and records clerks,151760,High school diploma or equivalent,2
-43-9031,Desktop publishers,5940,Other office and administrative support workers,5220,Associate's degree,4
-43-9199,"Office and administrative support workers, all other",5940,Other office and administrative support workers,172020,High school diploma or equivalent,2
-45-2021,Animal breeders,6050,Other agricultural workers,1360,High school diploma or equivalent,2
-45-2091,Agricultural equipment operators,6050,Other agricultural workers,28910,No formal educational credential,1
-45-2092,"Farmworkers and laborers, crop, nursery, and greenhouse",6050,Other agricultural workers,258730,No formal educational credential,1
-45-2093,"Farmworkers, farm, ranch, and aquacultural animals",6050,Other agricultural workers,32590,No formal educational credential,1
-45-2099,"Agricultural workers, all other",6050,Other agricultural workers,6040,No formal educational credential,1
-45-4021,Fallers,6130,Logging workers,4800,High school diploma or equivalent,2
-45-4022,Logging equipment operators,6130,Logging workers,23720,High school diploma or equivalent,2
-45-4023,Log graders and scalers,6130,Logging workers,3640,High school diploma or equivalent,2
-45-4029,"Logging workers, all other",6130,Logging workers,2540,High school diploma or equivalent,2
-47-2021,Brickmasons and blockmasons,6220,"Brickmasons, blockmasons, stonemasons, and reinforcing iron and rebar workers",56830,High school diploma or equivalent,2
-47-2022,Stonemasons,6220,"Brickmasons, blockmasons, stonemasons, and reinforcing iron and rebar workers",9790,High school diploma or equivalent,2
-47-2041,Carpet installers,6240,"Carpet, floor, and tile installers and finishers",15560,No formal educational credential,1
-47-2042,"Floor layers, except carpet, wood, and hard tiles",6240,"Carpet, floor, and tile installers and finishers",25150,No formal educational credential,1
-47-2043,Floor sanders and finishers,6240,"Carpet, floor, and tile installers and finishers",5070,No formal educational credential,1
-47-2044,Tile and stone setters,6240,"Carpet, floor, and tile installers and finishers",42420,No formal educational credential,1
-47-2051,Cement masons and concrete finishers,6250,"Cement masons, concrete finishers, and terrazzo workers",203560,No formal educational credential,1
-47-2053,Terrazzo workers and finishers,6250,"Cement masons, concrete finishers, and terrazzo workers",1460,High school diploma or equivalent,2
-47-2071,"Paving, surfacing, and tamping equipment operators",6305,Construction equipment operators,43080,High school diploma or equivalent,2
-47-2072,Pile driver operators,6305,Construction equipment operators,3010,High school diploma or equivalent,2
-47-2073,Operating engineers and other construction equipment operators,6305,Construction equipment operators,450370,High school diploma or equivalent,2
-47-2081,Drywall and ceiling tile installers,6330,"Drywall installers, ceiling tile installers, and tapers",90860,No formal educational credential,1
-47-2082,Tapers,6330,"Drywall installers, ceiling tile installers, and tapers",15560,No formal educational credential,1
-47-2131,"Insulation workers, floor, ceiling, and wall",6400,Insulation workers,38510,No formal educational credential,1
-47-2132,"Insulation workers, mechanical",6400,Insulation workers,22850,High school diploma or equivalent,2
-47-2141,"Painters, construction and maintenance",6410,Painters and paperhangers,215910,No formal educational credential,1
-47-2142,Paperhangers,6410,Painters and paperhangers,1830,No formal educational credential,1
-47-2171,Reinforcing iron and rebar workers,6220,"Brickmasons, blockmasons, stonemasons, and reinforcing iron and rebar workers",17400,High school diploma or equivalent,2
-47-3011,"Helpers--brickmasons, blockmasons, stonemasons, and tile and marble setters",6600,"Helpers, construction trades",16460,No formal educational credential,1
-47-3012,Helpers--carpenters,6600,"Helpers, construction trades",21770,No formal educational credential,1
-47-3013,Helpers--electricians,6600,"Helpers, construction trades",68670,High school diploma or equivalent,2
-47-3014,"Helpers--painters, paperhangers, plasterers, and stucco masons",6600,"Helpers, construction trades",7700,No formal educational credential,1
-47-3015,"Helpers--pipelayers, plumbers, pipefitters, and steamfitters",6600,"Helpers, construction trades",45300,High school diploma or equivalent,2
-47-3016,Helpers--roofers,6600,"Helpers, construction trades",4540,No formal educational credential,1
-47-3019,"Helpers, construction trades, all other",6600,"Helpers, construction trades",27250,No formal educational credential,1
-47-4071,Septic tank servicers and sewer pipe cleaners,6765,Other construction and related workers,27900,High school diploma or equivalent,2
-47-4090,Miscellaneous construction and related workers,6765,Other construction and related workers,28930,High school diploma or equivalent,2
-47-5011,"Derrick operators, oil and gas",6800,"Derrick, rotary drill, and service unit operators, and roustabouts, oil and gas",11510,No formal educational credential,1
-47-5012,"Rotary drill operators, oil and gas",6800,"Derrick, rotary drill, and service unit operators, and roustabouts, oil and gas",12180,No formal educational credential,1
-47-5013,"Service unit operators, oil and gas",6800,"Derrick, rotary drill, and service unit operators, and roustabouts, oil and gas",46150,No formal educational credential,1
-47-5022,"Excavating and loading machine and dragline operators, surface mining",6825,Surface mining machine operators and earth drillers,32630,High school diploma or equivalent,2
-47-5023,"Earth drillers, except oil and gas",6825,Surface mining machine operators and earth drillers,18010,High school diploma or equivalent,2
-47-5041,Continuous mining machine operators,6850,Underground mining machine operators,15700,No formal educational credential,1
-47-5043,"Roof bolters, mining",6850,Underground mining machine operators,1960,High school diploma or equivalent,2
-47-5044,"Loading and moving machine operators, underground mining",6850,Underground mining machine operators,5160,No formal educational credential,1
-47-5049,"Underground mining machine operators, all other",6850,Underground mining machine operators,2560,No formal educational credential,1
-47-5051,"Rock splitters, quarry",6950,Other extraction workers,3610,No formal educational credential,1
-47-5071,"Roustabouts, oil and gas",6800,"Derrick, rotary drill, and service unit operators, and roustabouts, oil and gas",43830,No formal educational credential,1
-47-5081,Helpers--extraction workers,6950,Other extraction workers,7360,High school diploma or equivalent,2
-47-5099,"Extraction workers, all other",6950,Other extraction workers,7120,High school diploma or equivalent,2
-49-2021,"Radio, cellular, and tower equipment installers and repairers",7020,Radio and telecommunications equipment installers and repairers,11810,Associate's degree,4
-49-2022,"Telecommunications equipment installers and repairers, except line installers",7020,Radio and telecommunications equipment installers and repairers,159670,Some college/other,3
-49-2093,"Electrical and electronics installers and repairers, transportation equipment",7100,"Other electrical and electronic equipment mechanics, installers, and repairers",7920,Some college/other,3
-49-2094,"Electrical and electronics repairers, commercial and industrial equipment",7100,"Other electrical and electronic equipment mechanics, installers, and repairers",58320,Some college/other,3
-49-2095,"Electrical and electronics repairers, powerhouse, substation, and relay",7100,"Other electrical and electronic equipment mechanics, installers, and repairers",24790,Some college/other,3
-49-2096,"Electronic equipment installers and repairers, motor vehicles",7100,"Other electrical and electronic equipment mechanics, installers, and repairers",8900,High school diploma or equivalent,2
-49-3041,Farm equipment mechanics and service technicians,7220,Heavy vehicle and mobile equipment service technicians and mechanics,36830,High school diploma or equivalent,2
-49-3042,"Mobile heavy equipment mechanics, except engines",7220,Heavy vehicle and mobile equipment service technicians and mechanics,177280,High school diploma or equivalent,2
-49-3043,Rail car repairers,7220,Heavy vehicle and mobile equipment service technicians and mechanics,19480,High school diploma or equivalent,2
-49-3051,Motorboat mechanics and service technicians,7240,Small engine mechanics,23230,High school diploma or equivalent,2
-49-3052,Motorcycle mechanics,7240,Small engine mechanics,14330,Some college/other,3
-49-3053,Outdoor power equipment and other small engine mechanics,7240,Small engine mechanics,36080,High school diploma or equivalent,2
-49-3091,Bicycle repairers,7260,"Miscellaneous vehicle and mobile equipment mechanics, installers, and repairers",13980,High school diploma or equivalent,2
-49-3092,Recreational vehicle service technicians,7260,"Miscellaneous vehicle and mobile equipment mechanics, installers, and repairers",17360,High school diploma or equivalent,2
-49-3093,Tire repairers and changers,7260,"Miscellaneous vehicle and mobile equipment mechanics, installers, and repairers",101520,High school diploma or equivalent,2
-49-9011,Mechanical door repairers,7300,Control and valve installers and repairers,27800,High school diploma or equivalent,2
-49-9012,"Control and valve installers and repairers, except mechanical door",7300,Control and valve installers and repairers,47780,High school diploma or equivalent,2
-49-9041,Industrial machinery mechanics,7330,Industrial and refractory machinery mechanics,412650,High school diploma or equivalent,2
-49-9045,"Refractory materials repairers, except brickmasons",7330,Industrial and refractory machinery mechanics,540,High school diploma or equivalent,2
-49-9061,Camera and photographic equipment repairers,7430,Precision instrument and equipment repairers,2540,High school diploma or equivalent,2
-49-9062,Medical equipment repairers,7430,Precision instrument and equipment repairers,64400,Associate's degree,4
-49-9063,Musical instrument repairers and tuners,7430,Precision instrument and equipment repairers,6170,High school diploma or equivalent,2
-49-9064,Watch and clock repairers,7430,Precision instrument and equipment repairers,1880,High school diploma or equivalent,2
-49-9069,"Precision instrument and equipment repairers, all other",7430,Precision instrument and equipment repairers,10330,High school diploma or equivalent,2
-49-9081,Wind turbine service technicians,7640,"Other installation, maintenance, and repair workers",9800,Some college/other,3
-49-9092,Commercial divers,7640,"Other installation, maintenance, and repair workers",2790,Some college/other,3
-49-9095,Manufactured building and mobile home installers,7640,"Other installation, maintenance, and repair workers",2910,High school diploma or equivalent,2
-49-9097,Signal and track switch repairers,7640,"Other installation, maintenance, and repair workers",9200,High school diploma or equivalent,2
-49-9099,"Installation, maintenance, and repair workers, all other",7640,"Other installation, maintenance, and repair workers",175860,High school diploma or equivalent,2
-51-2011,"Aircraft structure, surfaces, rigging, and systems assemblers",7750,Other assemblers and fabricators,29810,High school diploma or equivalent,2
-51-2021,"Coil winders, tapers, and finishers",7720,"Electrical, electronics, and electromechanical assemblers",11900,High school diploma or equivalent,2
-51-2028,"Electrical, electronic, and electromechanical assemblers, except coil winders, tapers, and finishers",7720,"Electrical, electronics, and electromechanical assemblers",267440,High school diploma or equivalent,2
-51-2051,Fiberglass laminators and fabricators,7750,Other assemblers and fabricators,20380,High school diploma or equivalent,2
-51-2061,Timing device assemblers and adjusters,7750,Other assemblers and fabricators,400,High school diploma or equivalent,2
-51-2090,Miscellaneous assemblers and fabricators,7750,Other assemblers and fabricators,1489280,High school diploma or equivalent,2
-51-3021,Butchers and meat cutters,7810,"Butchers and other meat, poultry, and fish processing workers",136330,No formal educational credential,1
-51-3022,"Meat, poultry, and fish cutters and trimmers",7810,"Butchers and other meat, poultry, and fish processing workers",138300,No formal educational credential,1
-51-3023,Slaughterers and meat packers,7810,"Butchers and other meat, poultry, and fish processing workers",71310,No formal educational credential,1
-51-4021,"Extruding and drawing machine setters, operators, and tenders, metal and plastic",7925,"Forming machine setters, operators, and tenders, metal and plastic",63370,High school diploma or equivalent,2
-51-4022,"Forging machine setters, operators, and tenders, metal and plastic",7925,"Forming machine setters, operators, and tenders, metal and plastic",9170,High school diploma or equivalent,2
-51-4023,"Rolling machine setters, operators, and tenders, metal and plastic",7925,"Forming machine setters, operators, and tenders, metal and plastic",24750,High school diploma or equivalent,2
-51-4032,"Drilling and boring machine tool setters, operators, and tenders, metal and plastic",8025,"Other machine tool setters, operators, and tenders, metal and plastic",5740,High school diploma or equivalent,2
-51-4034,"Lathe and turning machine tool setters, operators, and tenders, metal and plastic",8025,"Other machine tool setters, operators, and tenders, metal and plastic",19560,High school diploma or equivalent,2
-51-4035,"Milling and planing machine setters, operators, and tenders, metal and plastic",8025,"Other machine tool setters, operators, and tenders, metal and plastic",13990,High school diploma or equivalent,2
-51-4051,Metal-refining furnace operators and tenders,8040,"Metal furnace operators, tenders, pourers, and casters",20870,High school diploma or equivalent,2
-51-4052,"Pourers and casters, metal",8040,"Metal furnace operators, tenders, pourers, and casters",5460,High school diploma or equivalent,2
-51-4061,"Model makers, metal and plastic",8100,"Model makers, patternmakers, and molding machine setters, metal and plastic",2840,High school diploma or equivalent,2
-51-4062,"Patternmakers, metal and plastic",8100,"Model makers, patternmakers, and molding machine setters, metal and plastic",2150,High school diploma or equivalent,2
-51-4071,Foundry mold and coremakers,8100,"Model makers, patternmakers, and molding machine setters, metal and plastic",11780,High school diploma or equivalent,2
-51-4072,"Molding, coremaking, and casting machine setters, operators, and tenders, metal and plastic",8100,"Model makers, patternmakers, and molding machine setters, metal and plastic",158980,High school diploma or equivalent,2
-51-4081,"Multiple machine tool setters, operators, and tenders, metal and plastic",8225,Other metal workers and plastic workers,127790,High school diploma or equivalent,2
-51-4121,"Welders, cutters, solderers, and brazers",8140,"Welding, soldering, and brazing workers",421730,High school diploma or equivalent,2
-51-4122,"Welding, soldering, and brazing machine setters, operators, and tenders",8140,"Welding, soldering, and brazing workers",33020,High school diploma or equivalent,2
-51-4191,"Heat treating equipment setters, operators, and tenders, metal and plastic",8225,Other metal workers and plastic workers,14950,High school diploma or equivalent,2
-51-4192,"Layout workers, metal and plastic",8225,Other metal workers and plastic workers,6660,High school diploma or equivalent,2
-51-4193,"Plating machine setters, operators, and tenders, metal and plastic",8225,Other metal workers and plastic workers,31970,High school diploma or equivalent,2
-51-4194,"Tool grinders, filers, and sharpeners",8225,Other metal workers and plastic workers,6660,High school diploma or equivalent,2
-51-4199,"Metal workers and plastic workers, all other",8225,Other metal workers and plastic workers,20370,High school diploma or equivalent,2
-51-6041,Shoe and leather workers and repairers,8335,Shoe and leather workers,7230,High school diploma or equivalent,2
-51-6042,Shoe machine operators and tenders,8335,Shoe and leather workers,4630,High school diploma or equivalent,2
-51-6051,"Sewers, hand",8350,"Tailors, dressmakers, and sewers",3390,No formal educational credential,1
-51-6052,"Tailors, dressmakers, and custom sewers",8350,"Tailors, dressmakers, and sewers",14950,No formal educational credential,1
-51-6061,Textile bleaching and dyeing machine operators and tenders,8365,"Textile machine setters, operators, and tenders",6650,High school diploma or equivalent,2
-51-6062,"Textile cutting machine setters, operators, and tenders",8365,"Textile machine setters, operators, and tenders",9760,High school diploma or equivalent,2
-51-6063,"Textile knitting and weaving machine setters, operators, and tenders",8365,"Textile machine setters, operators, and tenders",15980,High school diploma or equivalent,2
-51-6064,"Textile winding, twisting, and drawing out machine setters, operators, and tenders",8365,"Textile machine setters, operators, and tenders",23550,High school diploma or equivalent,2
-51-6091,"Extruding and forming machine setters, operators, and tenders, synthetic and glass fibers",8465,"Other textile, apparel, and furnishings workers",14520,High school diploma or equivalent,2
-51-6092,Fabric and apparel patternmakers,8465,"Other textile, apparel, and furnishings workers",2670,High school diploma or equivalent,2
-51-6099,"Textile, apparel, and furnishings workers, all other",8465,"Other textile, apparel, and furnishings workers",15080,High school diploma or equivalent,2
-51-7031,"Model makers, wood",8555,Other woodworkers,590,High school diploma or equivalent,2
-51-7032,"Patternmakers, wood",8555,Other woodworkers,260,High school diploma or equivalent,2
-51-7099,"Woodworkers, all other",8555,Other woodworkers,7830,High school diploma or equivalent,2
-51-8011,Nuclear power reactor operators,8600,"Power plant operators, distributors, and dispatchers",5760,High school diploma or equivalent,2
-51-8012,Power distributors and dispatchers,8600,"Power plant operators, distributors, and dispatchers",9040,High school diploma or equivalent,2
-51-8013,Power plant operators,8600,"Power plant operators, distributors, and dispatchers",31490,High school diploma or equivalent,2
-51-8091,Chemical plant and system operators,8630,Miscellaneous plant and system operators,17980,High school diploma or equivalent,2
-51-8092,Gas plant operators,8630,Miscellaneous plant and system operators,15930,High school diploma or equivalent,2
-51-8093,"Petroleum pump system operators, refinery operators, and gaugers",8630,Miscellaneous plant and system operators,33360,High school diploma or equivalent,2
-51-8099,"Plant and system operators, all other",8630,Miscellaneous plant and system operators,15370,High school diploma or equivalent,2
-51-9011,Chemical equipment operators and tenders,8640,"Chemical processing machine setters, operators, and tenders",120260,High school diploma or equivalent,2
-51-9012,"Separating, filtering, clarifying, precipitating, and still machine setters, operators, and tenders",8640,"Chemical processing machine setters, operators, and tenders",53170,High school diploma or equivalent,2
-51-9021,"Crushing, grinding, and polishing machine setters, operators, and tenders",8650,"Crushing, grinding, polishing, mixing, and blending workers",26210,High school diploma or equivalent,2
-51-9022,"Grinding and polishing workers, hand",8650,"Crushing, grinding, polishing, mixing, and blending workers",12290,No formal educational credential,1
-51-9023,"Mixing and blending machine setters, operators, and tenders",8650,"Crushing, grinding, polishing, mixing, and blending workers",105740,High school diploma or equivalent,2
-51-9031,"Cutters and trimmers, hand",8710,Cutting workers,7220,No formal educational credential,1
-51-9032,"Cutting and slicing machine setters, operators, and tenders",8710,Cutting workers,52720,High school diploma or equivalent,2
-51-9081,Dental laboratory technicians,8760,Dental and ophthalmic laboratory technicians and medical appliance technicians,34190,High school diploma or equivalent,2
-51-9082,Medical appliance technicians,8760,Dental and ophthalmic laboratory technicians and medical appliance technicians,12550,High school diploma or equivalent,2
-51-9083,Ophthalmic laboratory technicians,8760,Dental and ophthalmic laboratory technicians and medical appliance technicians,18240,High school diploma or equivalent,2
-51-9123,"Painting, coating, and decorating workers",8810,Painting workers,10700,No formal educational credential,1
-51-9124,"Coating, painting, and spraying machine setters, operators, and tenders",8810,Painting workers,155880,High school diploma or equivalent,2
-51-9141,Semiconductor processing technicians,8990,"Miscellaneous production workers, including equipment operators and tenders",26450,High school diploma or equivalent,2
-51-9161,Computer numerically controlled tool operators,7905,Computer numerically controlled tool operators and programmers,187670,High school diploma or equivalent,2
-51-9162,Computer numerically controlled tool programmers,7905,Computer numerically controlled tool operators and programmers,28030,Some college/other,3
-51-9192,"Cleaning, washing, and metal pickling equipment operators and tenders",8990,"Miscellaneous production workers, including equipment operators and tenders",15210,High school diploma or equivalent,2
-51-9193,Cooling and freezing equipment operators and tenders,8990,"Miscellaneous production workers, including equipment operators and tenders",6500,High school diploma or equivalent,2
-51-9199,"Production workers, all other",8990,"Miscellaneous production workers, including equipment operators and tenders",243500,High school diploma or equivalent,2
-53-1041,Aircraft cargo handling supervisors,9005,Supervisors of transportation and material moving workers,9020,High school diploma or equivalent,2
-53-1047,"First-line supervisors of transportation and material moving workers, except aircraft cargo handling supervisors",9005,Supervisors of transportation and material moving workers,594330,High school diploma or equivalent,2
-53-2011,"Airline pilots, copilots, and flight engineers",9030,Aircraft pilots and flight engineers,93670,Bachelor's degree,5
-53-2012,Commercial pilots,9030,Aircraft pilots and flight engineers,52750,Some college/other,3
-53-2021,Air traffic controllers,9040,Air traffic controllers and airfield operations specialists,22310,Associate's degree,4
-53-2022,Airfield operations specialists,9040,Air traffic controllers and airfield operations specialists,18320,High school diploma or equivalent,2
-53-3031,Driver/sales workers,9130,Driver/sales workers and truck drivers,463120,High school diploma or equivalent,2
-53-3032,Heavy and tractor-trailer truck drivers,9130,Driver/sales workers and truck drivers,2044400,Some college/other,3
-53-3033,Light truck drivers,9130,Driver/sales workers and truck drivers,1003960,High school diploma or equivalent,2
-53-4011,Locomotive engineers,9210,Locomotive engineers and operators,32390,High school diploma or equivalent,2
-53-4013,"Rail yard engineers, dinkey operators, and hostlers",9210,Locomotive engineers and operators,2430,High school diploma or equivalent,2
-53-4022,"Railroad brake, signal, and switch operators and locomotive firers",9265,Other rail transportation workers,13610,High school diploma or equivalent,2
-53-4041,Subway and streetcar operators,9265,Other rail transportation workers,14860,High school diploma or equivalent,2
-53-4099,"Rail transportation workers, all other",9265,Other rail transportation workers,1830,High school diploma or equivalent,2
-53-5011,Sailors and marine oilers,9300,"Sailors and marine oilers, and ship engineers",29960,No formal educational credential,1
-53-5021,"Captains, mates, and pilots of water vessels",9310,Ship and boat captains and operators,34520,Some college/other,3
-53-5022,Motorboat operators,9310,Ship and boat captains and operators,2710,Some college/other,3
-53-5031,Ship engineers,9300,"Sailors and marine oilers, and ship engineers",8860,Some college/other,3
-53-6011,Bridge and lock tenders,9430,Other transportation workers,3460,High school diploma or equivalent,2
-53-6031,Automotive and watercraft service attendants,9365,Transportation service attendants,92530,No formal educational credential,1
-53-6032,Aircraft service attendants,9365,Transportation service attendants,24940,High school diploma or equivalent,2
-53-6041,Traffic technicians,9430,Other transportation workers,7530,High school diploma or equivalent,2
-53-6099,"Transportation workers, all other",9430,Other transportation workers,10940,High school diploma or equivalent,2
-53-7011,Conveyor operators and tenders,9570,"Conveyor, dredge, and hoist and winch operators",24660,No formal educational credential,1
-53-7031,Dredge operators,9570,"Conveyor, dredge, and hoist and winch operators",940,High school diploma or equivalent,2
-53-7041,Hoist and winch operators,9570,"Conveyor, dredge, and hoist and winch operators",2230,No formal educational credential,1
-53-7071,Gas compressor and gas pumping station operators,9650,Pumping station operators,4400,High school diploma or equivalent,2
-53-7072,"Pump operators, except wellhead pumpers",9650,Pumping station operators,11570,High school diploma or equivalent,2
-53-7073,Wellhead pumpers,9650,Pumping station operators,18230,High school diploma or equivalent,2
-53-7121,"Tank car, truck, and ship loaders",9760,Other material moving workers,11400,No formal educational credential,1
-53-7199,"Material moving workers, all other",9760,Other material moving workers,23970,No formal educational credential,1
+occ_acs,acs_occ_title,occ_soc,bls_occ_title,educ_req_nbr,educ_req_emp,allocc_emp,pct
+3550,Other healthcare practitioners and technical occupations,29-9099,"Healthcare practitioners and technical workers, all other",3,55680,121640,.45774415
+3550,Other healthcare practitioners and technical occupations,29-9021,Health information technologists and medical registrars,4,34430,121640,.28304833
+3550,Other healthcare practitioners and technical occupations,29-9091,Athletic trainers,6,31530,121640,.25920749
+3840,Fish and game wardens and parking enforcement officers,33-3041,Parking enforcement workers,2,7420,13710,.54121077
+3840,Fish and game wardens and parking enforcement officers,33-3031,Fish and game wardens,5,6290,13710,.4587892
+9040,Air traffic controllers and airfield operations specialists,53-2021,Air traffic controllers,4,22310,40630,.54910165
+9040,Air traffic controllers and airfield operations specialists,53-2022,Airfield operations specialists,2,18320,40630,.45089835
+1860,Other social scientists,19-3099,"Social scientists and related workers, all other",5,36670,64090,.57216412
+1860,Other social scientists,19-3022,Survey researchers,6,27420,64090,.42783585
+9130,Driver/sales workers and truck drivers,53-3032,Heavy and tractor-trailer truck drivers,3,2044400,3511480,.58220464
+9130,Driver/sales workers and truck drivers,53-3033,Light truck drivers,2,1467080,3511480,.41779536
+6600,"Helpers, construction trades",47-3013,Helpers--electricians,2,113970,191690,.59455371
+6600,"Helpers, construction trades",47-3019,"Helpers, construction trades, all other",1,77720,191690,.40544629
+3960,Other protective service workers,33-9092,"Lifeguards, ski patrol, and other recreational protective service workers",1,123560,206060,.59963119
+3960,Other protective service workers,33-9099,"Protective service workers, all other",2,82500,206060,.40036884
+2400,"Archivists, curators, and museum technicians",25-4012,Curators,6,19660,32330,.60810393
+2400,"Archivists, curators, and museum technicians",25-4013,Museum technicians and conservators,5,12670,32330,.39189607
+6400,Insulation workers,47-2131,"Insulation workers, floor, ceiling, and wall",1,38510,61360,.62760758
+6400,Insulation workers,47-2132,"Insulation workers, mechanical",2,22850,61360,.37239245
+9030,Aircraft pilots and flight engineers,53-2011,"Airline pilots, copilots, and flight engineers",5,93670,146420,.63973498
+9030,Aircraft pilots and flight engineers,53-2012,Commercial pilots,3,52750,146420,.36026499
+4525,Other personal appearance workers,39-5093,Shampooers,1,7360,11490,.64055699
+4525,Other personal appearance workers,39-5091,"Makeup artists, theatrical and performance",3,4130,11490,.35944298
+2555,Other educational instruction and library workers,25-9031,Instructional coordinators,6,215380,328870,.65490925
+2555,Other educational instruction and library workers,25-9099,"Educational instruction and library workers, all other",5,113490,328870,.34509078
+4255,Other grounds maintenance workers,37-3012,"Pesticide handlers, sprayers, and applicators, vegetation",2,23520,35500,.66253519
+4255,Other grounds maintenance workers,37-3019,"Grounds maintenance workers, all other",1,11980,35500,.33746478
+1970,"Other life, physical, and social science technicians",19-4099,"Life, physical, and social science technicians, all other",4,100970,149380,.67592716
+1970,"Other life, physical, and social science technicians",19-4061,Social science research assistants,5,48410,149380,.32407284
+2360,Other teachers and instructors,25-3031,"Substitute teachers, short-term",5,599710,871820,.68788284
+2360,Other teachers and instructors,25-3021,Self-enrichment teachers,2,272110,871820,.31211719
+2905,Other media and communication equipment workers,27-4011,Audio and video technicians,3,90820,128440,.70710057
+2905,Other media and communication equipment workers,27-4012,Broadcast technicians,4,26190,128440,.20390844
+2905,Other media and communication equipment workers,27-4099,"Media and communication equipment workers, all other",2,11430,128440,.088990971
+3620,Physical therapist assistants and aides,31-2021,Physical therapist assistants,4,104000,146390,.71043104
+3620,Physical therapist assistants and aides,31-2022,Physical therapist aides,2,42390,146390,.28956896
+2025,Other community and social service specialists,21-1099,"Community and social service specialists, all other",5,153110,211660,.72337711
+2025,Other community and social service specialists,21-1094,Community health workers,2,58550,211660,.27662289
+2740,Dancers and choreographers,27-2031,Dancers,1,11510,15700,.73312104
+2740,Dancers and choreographers,27-2032,Choreographers,2,4190,15700,.26687899
+1610,Biological scientists,19-1029,"Biological scientists, all other",5,99860,133040,.75060135
+1610,Biological scientists,19-1021,Biochemists and biophysicists,7,33180,133040,.24939868
+3430,Dietetic technicians and ophthalmic medical technicians,29-2057,Ophthalmic medical technicians,3,73390,97630,.75171566
+3430,Dietetic technicians and ophthalmic medical technicians,29-2051,Dietetic technicians,4,24240,97630,.24828434
+7430,Precision instrument and equipment repairers,49-9062,Medical equipment repairers,4,64400,85320,.75480545
+7430,Precision instrument and equipment repairers,49-9069,"Precision instrument and equipment repairers, all other",2,20920,85320,.24519455
+9300,"Sailors and marine oilers, and ship engineers",53-5011,Sailors and marine oilers,1,29960,38820,.77176714
+9300,"Sailors and marine oilers, and ship engineers",53-5031,Ship engineers,3,8860,38820,.22823288
+2300,Preschool and kindergarten teachers,25-2011,"Preschool teachers, except special education",4,430240,548820,.78393644
+2300,Preschool and kindergarten teachers,25-2012,"Kindergarten teachers, except special education",5,118580,548820,.21606356
+9365,Transportation service attendants,53-6031,Automotive and watercraft service attendants,1,92530,117470,.78769046
+9365,Transportation service attendants,53-6032,Aircraft service attendants,2,24940,117470,.21230952
+6950,Other extraction workers,47-5081,Helpers--extraction workers,2,14480,18090,.80044222
+6950,Other extraction workers,47-5051,"Rock splitters, quarry",1,3610,18090,.19955777
+230,Education and childcare administrators,11-9032,"Education administrators, kindergarten through secondary",6,469850,584630,.8036707
+230,Education and childcare administrators,11-9031,"Education and childcare administrators, preschool and daycare",5,114780,584630,.1963293
+4850,"Sales representatives, wholesale and manufacturing",41-4012,"Sales representatives, wholesale and manufacturing, except technical and scientific products",2,1288920,1600700,.80522269
+4850,"Sales representatives, wholesale and manufacturing",41-4011,"Sales representatives, wholesale and manufacturing, technical and scientific products",5,311780,1600700,.19477728
+7240,Small engine mechanics,49-3053,Outdoor power equipment and other small engine mechanics,2,59310,73640,.80540466
+7240,Small engine mechanics,49-3052,Motorcycle mechanics,3,14330,73640,.19459532
+3330,Nuclear medicine technologists and medical dosimetrists,29-2033,Nuclear medicine technologists,4,16560,20460,.80938417
+3330,Nuclear medicine technologists and medical dosimetrists,29-2036,Medical dosimetrists,5,3900,20460,.19061583
+1050,Computer support specialists,15-1232,Computer user support specialists,3,689700,848420,.81292284
+1050,Computer support specialists,15-1231,Computer network support specialists,4,158720,848420,.18707715
+1980,Occupational health and safety specialists and technicians,19-5011,Occupational health and safety specialists,5,122300,149570,.81767732
+1980,Occupational health and safety specialists and technicians,19-5012,Occupational health and safety technicians,2,27270,149570,.18232265
+2205,Postsecondary teachers,25-1071,"Health specialties teachers, postsecondary",7,1181440,1394120,.84744501
+2205,Postsecondary teachers,25-1194,"Career/technical education teachers, postsecondary",5,111180,1394120,.079749234
+2205,Postsecondary teachers,25-1121,"Art, drama, and music teachers, postsecondary",6,101500,1394120,.072805785
+1240,Other mathematical science occupations,15-2051,Data scientists,5,197030,229200,.85964221
+1240,Other mathematical science occupations,15-2041,Statisticians,6,32170,229200,.14035776
+3750,Fire inspectors,33-2021,Fire inspectors and investigators,3,14200,16470,.86217368
+3750,Fire inspectors,33-2022,Forest fire inspectors and prevention specialists,2,2270,16470,.13782635
+335,Entertainment and recreation managers,11-9072,"Entertainment and recreation managers, except gambling",5,29690,34280,.8661027
+335,Entertainment and recreation managers,11-9071,Gambling managers,2,4590,34280,.13389732
+7905,Computer numerically controlled tool operators and programmers,51-9161,Computer numerically controlled tool operators,2,187670,215700,.87005103
+7905,Computer numerically controlled tool operators and programmers,51-9162,Computer numerically controlled tool programmers,3,28030,215700,.129949
+2600,Artists and related workers,27-1011,Art directors,5,92050,105300,.87416905
+2600,Artists and related workers,27-1019,"Artists and related workers, all other",1,13250,105300,.12583096
+8710,Cutting workers,51-9032,"Cutting and slicing machine setters, operators, and tenders",2,52720,59940,.87954623
+8710,Cutting workers,51-9031,"Cutters and trimmers, hand",1,7220,59940,.12045379
+1650,Other life scientists,19-1042,"Medical scientists, except epidemiologists",7,136620,154340,.88518852
+1650,Other life scientists,19-1041,Epidemiologists,6,10230,154340,.066282235
+1650,Other life scientists,19-1099,"Life scientists, all other",5,7490,154340,.048529223
+3545,Miscellaneous health technologists and technicians,29-2099,"Health technologists and technicians, all other",3,171110,190180,.89972657
+3545,Miscellaneous health technologists and technicians,29-2092,Hearing aid specialists,2,10250,190180,.053896308
+3545,Miscellaneous health technologists and technicians,29-2091,Orthotists and prosthetists,6,8820,190180,.046377115
+2545,Teaching assistants,25-9045,"Teaching assistants, except postsecondary",3,1337320,1483280,.90159649
+2545,Teaching assistants,25-9044,"Teaching assistants, postsecondary",5,145960,1483280,.098403536
+7100,"Other electrical and electronic equipment mechanics, installers, and repairers",49-2094,"Electrical and electronics repairers, commercial and industrial equipment",3,91030,99930,.91093767
+7100,"Other electrical and electronic equipment mechanics, installers, and repairers",49-2096,"Electronic equipment installers and repairers, motor vehicles",2,8900,99930,.089062341
+3610,Occupational therapy assistants and aides,31-2011,Occupational therapy assistants,4,46090,50520,.91231197
+3610,Occupational therapy assistants and aides,31-2012,Occupational therapy aides,2,4430,50520,.087688044
+4461,"Embalmers, crematory operators and funeral attendants",39-4021,Funeral attendants,2,35840,39220,.91381949
+4461,"Embalmers, crematory operators and funeral attendants",39-4011,Embalmers,4,3380,39220,.086180523
+8650,"Crushing, grinding, polishing, mixing, and blending workers",51-9023,"Mixing and blending machine setters, operators, and tenders",2,131950,144240,.9147948
+8650,"Crushing, grinding, polishing, mixing, and blending workers",51-9022,"Grinding and polishing workers, hand",1,12290,144240,.085205212
+6850,Underground mining machine operators,47-5041,Continuous mining machine operators,1,23420,25380,.92277384
+6850,Underground mining machine operators,47-5043,"Roof bolters, mining",2,1960,25380,.077226162
+4435,Other entertainment attendants and related workers,39-3091,Amusement and recreation attendants,1,364290,392630,.92782009
+4435,Other entertainment attendants and related workers,39-3093,"Locker room, coatroom, and dressing room attendants",2,28340,392630,.072179914
+7020,Radio and telecommunications equipment installers and repairers,49-2022,"Telecommunications equipment installers and repairers, except line installers",3,159670,171480,.93112898
+7020,Radio and telecommunications equipment installers and repairers,49-2021,"Radio, cellular, and tower equipment installers and repairers",4,11810,171480,.068871006
+8810,Painting workers,51-9124,"Coating, painting, and spraying machine setters, operators, and tenders",2,155880,166580,.93576658
+8810,Painting workers,51-9123,"Painting, coating, and decorating workers",1,10700,166580,.0642334
+7640,"Other installation, maintenance, and repair workers",49-9099,"Installation, maintenance, and repair workers, all other",2,187970,200560,.93722576
+7640,"Other installation, maintenance, and repair workers",49-9081,Wind turbine service technicians,3,12590,200560,.062774234
+440,Other managers,11-9199,"Managers, all other",5,589750,628930,.93770373
+440,Other managers,11-9131,Postmasters and mail superintendents,2,24980,628930,.039718252
+440,Other managers,11-9171,Funeral home managers,4,14200,628930,.022578029
+5350,Correspondence clerks and order clerks,43-4151,Order clerks,3,91830,96480,.95180351
+5350,Correspondence clerks and order clerks,43-4021,Correspondence clerks,2,4650,96480,.048196517
+9570,"Conveyor, dredge, and hoist and winch operators",53-7011,Conveyor operators and tenders,1,26890,27830,.96622348
+9570,"Conveyor, dredge, and hoist and winch operators",53-7031,Dredge operators,2,940,27830,.033776499
+5940,Other office and administrative support workers,43-9199,"Office and administrative support workers, all other",2,172020,177240,.97054839
+5940,Other office and administrative support workers,43-9031,Desktop publishers,4,5220,177240,.029451592
+540,"Claims adjusters, appraisers, examiners, and investigators",13-1031,"Claims adjusters, examiners, and investigators",2,293780,302450,.9713341
+540,"Claims adjusters, appraisers, examiners, and investigators",13-1032,"Insurance appraisers, auto damage",3,8670,302450,.028665895
+2100,"Lawyers, and judges, magistrates, and other judicial workers",23-1011,Lawyers,7,770480,777540,.99092007
+2100,"Lawyers, and judges, magistrates, and other judicial workers",23-1022,"Arbitrators, mediators, and conciliators",5,7060,777540,.0090799183
+6250,"Cement masons, concrete finishers, and terrazzo workers",47-2051,Cement masons and concrete finishers,1,203560,205020,.99287874
+6250,"Cement masons, concrete finishers, and terrazzo workers",47-2053,Terrazzo workers and finishers,2,1460,205020,.0071212566
+6050,Other agricultural workers,45-2092,"Farmworkers and laborers, crop, nursery, and greenhouse",1,326270,327630,.99584895
+6050,Other agricultural workers,45-2021,Animal breeders,2,1360,327630,.0041510239
+630,Human resources workers,13-1071,Human resources specialists,5,958770,959230,.99952042
+630,Human resources workers,13-1074,Farm labor contractors,1,460,959230,.00047955129
+4020,Cooks,35-2014,"Cooks, restaurant",1,2666500,2667240,.99972254
+4020,Cooks,35-2013,"Cooks, private household",3,740,2667240,.00027744035
+6115,Fishing and hunting workers,45-3031,Fishing and hunting workers,1,0,0,
