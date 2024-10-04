@@ -21,7 +21,7 @@ foreach var of varlist `AGEDUMS' {
 preserve
 	keep if `var' == 1
 	collapse (p50) med_wage=incwage (mean) avg_wage=incwage [pw = perwt], ///
-	 by(bls_occ_title occ_soc educ_re* ftfy)
+	 by(occ_acs bls_occ_title occ_soc educ_re* ftfy)
 	
 	gen cln_educ_cat = "all_workers"
 	gen age_cat = "`var'"
@@ -33,7 +33,7 @@ restore
 preserve
 	keep if `var' == 1
 	collapse (p50) med_wage=incwage (mean) avg_wage=incwage [pw = perwt], ///
-	 by(bls_occ_title occ_soc educ_re* cln_educ_cat ftfy)
+	 by(occ_acs bls_occ_title occ_soc educ_re* cln_educ_cat ftfy)
 		 
 	gen age_cat = "`var'"
 	tempfile D_`var'
@@ -44,7 +44,7 @@ restore
 preserve
 	keep if `var' == 1
 	collapse (p50) med_wage=incwage (mean) avg_wage=incwage [pw = perwt], ///
-	 by(bls_occ_title occ_soc educ_re* postsec_deg ftfy)
+	 by(occ_acs bls_occ_title occ_soc educ_re* postsec_deg ftfy)
 	
 	gen cln_educ_cat = "BA+" if postsec == 1
 	replace cln_educ_cat = "less_BA" if postsec==0
@@ -74,7 +74,7 @@ preserve
 	}
 		
 	collapse (p50) med_wage=incwage (mean) avg_wage=incwage [pw = perwt], ///
-	 by(bls occ_soc educ_re* agg_educ ftfy)
+	 by(occ_acs bls occ_soc educ_re* agg_educ ftfy)
 		
 	rename agg_educ cln_educ_cat
 	gen age_cat = "`var'"
@@ -153,12 +153,13 @@ foreach x in `AGEDUMS' {
 
 ** CLEAN DATASET **
 replace bls_occ_title = "All occupations" if bls == ""
+replace occ_acs = 0 if bls == "All occupations"
 replace age_cat = substr(age_cat, strpos(age_cat, "_")+1, .)
 replace age_cat = subinstr(age_cat, "_", "-", .)
 replace age_cat = "all_workers" if age_cat == "all"
 
 ** ADD EMPLOYEE COUNTS **
-merge 1:1 bls_occ_title age_cat cln_educ_cat educ_re* ftfy ///
+merge 1:1 occ_acs bls_occ_title age_cat cln_educ_cat educ_re* ftfy ///
  using "../intermediate/counts_by_occ"
 	assert _merge==3
 	drop _merge
@@ -166,7 +167,7 @@ merge 1:1 bls_occ_title age_cat cln_educ_cat educ_re* ftfy ///
 *** CREATE COMPARISON VALUE FOR PREMIUM CALCULATION ***
 gen int_wage = 0
 	replace int_wage = med_wage if cln_educ_cat == "bls_educ"
-	bysort age_cat bls_occ_title ft: egen comp_wage = max(int_wage)
+	bysort age_cat occ_acs bls_occ_title ft: egen comp_wage = max(int_wage)
 	replace comp_wage = . if educ_req_nbr == 7 | mi(educ_req) | ftfy == 0 | ///
 	 suff_flag == 0
 	drop int_wage
@@ -181,7 +182,7 @@ gen ovl_prem_ba = (med_wage > $BA_PREM1 * comp_wage & cln_educ == "bachelors" //
 	replace ovl_prem_ba = . if cln_educ != "bachelors" | educ_req_nbr > 4
 
 *** SAVE DATA ***
-order age_c bls_occ occ_soc educ_req educ_req_n cln_educ n_wtd n_raw suff ///
+order age_c occ_acs bls_occ occ_soc educ_re* cln_educ n_wtd n_raw suff ///
  comp_count comp_wage med_wage avg_wage ovl_prem_ba
 gsort age_cat cln_educ_cat educ_req_nbr bls
 

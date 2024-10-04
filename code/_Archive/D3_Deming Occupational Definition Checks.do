@@ -17,7 +17,8 @@ gen deming_cat = ""
 	replace deming_cat = "sales_admin_support" if occ > 242 & occ < 400
 	replace deming_cat = "blue_collar" if occ >= 400
 	replace deming_cat = "management" if occ > 3 & occ < 23
-	replace deming_cat = "management" if inlist(occ, 243, 303, 413, 414, 415) | inlist(occ, 433, 448, 450, 470, 503, 558, 628, 803, 823)
+	replace deming_cat = "management" if inlist(occ, 243, 303, 413, 414, 415) | ///
+	 inlist(occ, 433, 448, 450, 470, 503, 558, 628, 803, 823)
 
 rename acs occ2010
 keep occ2010 deming_cat
@@ -34,8 +35,26 @@ use "../intermediate/clean_acs_data", clear
 	
 merge m:1 occ2010 using `DEMING'
 
-tab _merge // 89.38% of obs matched
+** FIX LARGEST MISSING CATEGORIES **
+tab occ2010 if _merge == 1, sort
+tab occ2010 if _merge == 1, nol sort
+
+replace deming_cat = "other_professional" if occ2010 == 3130 // Registered nurses: occ == 95
+replace deming_cat = "other_professional" if occ2010 == 1000 // Computer scientists: occ == 64
+replace deming_cat = "management" if occ2010 == 30 // Managers in Marketing, Advert...: occ == 13
+replace deming_cat = "management" if occ2010 == 130 // Human Resources Managers: occ == 8
+replace deming_cat = "other_professional" if occ2010 == 2140 // Paralegals...: occ == 234
+replace deming_cat = "blue_collar" if occ2010 == 9100 // Bus and Ambulance Drivers...: occ == 808
+replace deming_cat = "other_professional" if occ2010 == 3530 // Health Technologists..." occ == 208
+replace deming_cat = "other_professional" if occ2010 == 1830 // Urban/Regional Planners: occ == 173
+replace deming_cat = "blue_collar" if occ2010 == 8230 // Bookbinders/Printing Machine...: occ == 734
+
+gen mi_deming = (mi(deming_cat))
+tab mi_deming // 94.95% match
+drop mi_deming
+
 keep if _merge == 3
+drop _merge
 
 *** DEFINE AGE GROUPS ***
 gen group = "22-23" if age < 24

@@ -25,7 +25,7 @@ preserve
 	keep if `var' == 1
 
 	collapse (sum) n_raw = n n_wtd = perwt, ///
-	 by(bls_occ_title occ_soc educ_re* ftfy)
+	 by(occ_acs bls_occ_title occ_soc educ_re* ftfy)
 
 	gen cln_educ_cat = "all_workers"
 	gen age_cat = "`var'"
@@ -38,7 +38,7 @@ preserve
 	keep if `var' == 1
 	
 	collapse (sum) n_raw = n n_wtd = perwt, ///
-	 by(bls_occ_title occ_soc educ_re* cln_educ_cat ftfy)
+	 by(occ_acs bls_occ_title occ_soc educ_re* cln_educ_cat ftfy)
 
 	gen age_cat = "`var'"
 	tempfile D_`var'
@@ -50,7 +50,7 @@ preserve
 	keep if `var' == 1
 	
 	collapse (sum) n_raw = n n_wtd = perwt, ///
-	 by(bls_occ_title occ_soc educ_re* postsec_deg ftfy)
+	 by(occ_acs bls_occ_title occ_soc educ_re* postsec_deg ftfy)
 	 
 	gen cln_educ_cat = "BA+" if postsec == 1
 	replace cln_educ_cat = "less_BA" if postsec==0
@@ -81,7 +81,7 @@ preserve
 	
 	
 	collapse (sum) n_raw = n n_wtd = perwt, ///
-	 by(bls_occ_title occ_soc educ_re* agg_educ ftfy)
+	 by(occ_acs bls_occ_title occ_soc educ_re* agg_educ ftfy)
 
 	rename agg_educ cln_educ_cat
 	
@@ -159,6 +159,7 @@ foreach x in `AGEDUMS' {
 
 ** CLEAN DATASET **
 replace bls_occ_title = "All occupations" if bls == ""
+replace occ_acs = 0 if bls == "All occupations"
 replace age_cat = substr(age_cat, strpos(age_cat, "_")+1, .)
 replace age_cat = subinstr(age_cat, "_", "-", .)
 replace age_cat = "all_workers" if age_cat == "all"
@@ -166,7 +167,7 @@ replace age_cat = "all_workers" if age_cat == "all"
 ** CREATE FLAG FOR TOO FEW OBSERVATIONS **
 gen int_count = 0
 	replace int_count = n_raw if cln_educ_cat == "bls_educ"
-	bysort age_cat bls ftfy: egen comp_count = max(int_count)
+	bysort age_cat occ_acs bls ftfy: egen comp_count = max(int_count)
 	replace comp_count = 0 if ftfy == 0 | mi(educ_req)
 	
 gen suff_flag = (comp_count >= $NFLAG )
@@ -175,7 +176,7 @@ gen suff_flag = (comp_count >= $NFLAG )
 drop int_count
 
 ** SAVE DATA **
-order bls_occ occ_soc educ_req educ_req_n age_cat cln_educ_cat n_w n_r suff_flag
+order occ_acs bls_occ occ_soc educ_re* age_cat cln_educ n_w n_r suff_flag
 gsort age_cat cln_educ_cat educ_req_nbr occ_soc
 
 save "../intermediate/counts_by_occ", replace

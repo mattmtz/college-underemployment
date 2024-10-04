@@ -62,14 +62,29 @@ gen n_educ_group = 1
 	replace n_educ_group = 2 if inlist(cln_educ_cat, "some_college", "associates")
 	replace n_educ_group = 3 if cln_educ_cat == "bachelors"
 	replace n_educ_group = 4 if cln_educ_cat == "masters" | strpos(cln_educ_cat, "doct")
-	
-collapse (sum) perwt, by(bls rank occ_soc educ_req educ_group n_educ_group)
 
-bysort bls: egen tot = sum(perwt)
-	gen pct = perwt / tot
+*** GET COUNTS ***
+preserve
+	collapse (sum) perwt, by(bls rank occ_soc educ_req educ_group n_educ_group)
+
+	bysort bls: egen tot = sum(perwt)
+		gen pct = perwt / tot
 	
+	tempfile COUNTS
+	save `COUNTS'
+restore
+
+*** CREATE FULL DATASET ***
+collapse (median) incwage [pw = perwt], by(bls rank occ_soc educ_req educ_group ///
+ n_educ_group)
+ 
+merge 1:1 bls rank occ_soc educ_req educ_group n_educ_group using `COUNTS'
+	assert _merge == 3
+	drop _merge
+
 *** EXPORT DATA ***
-order rank bls occ educ_req educ_group tot perwt pct
+keep rank bls occ educ_req educ_group tot perwt pct incwage n_educ_group
+order rank bls occ educ_req educ_group tot perwt pct incwage
 gsort rank n_educ_group
 drop n_educ_group
 export excel using "output/full_BA_shares_in_HS_occs.xlsx", first(var) replace

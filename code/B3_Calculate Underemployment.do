@@ -12,7 +12,7 @@
 *** PREPARE OCCUPATION-LEVEL DATA ***
 use "../intermediate/data_by_occ", clear
 	keep if cln_educ_cat == "bachelors" & suff_flag == 1 & ftfy == 1
-	keep bls age_cat comp_wage
+	keep occ_acs occ_soc bls age_cat comp_wage
 	
 	tempfile OCCDAT
 	save `OCCDAT'
@@ -35,7 +35,7 @@ preserve
 		drop agedum*
 	
 	* Merge in summary data
-	merge m:1 bls age_cat using `OCCDAT'
+	merge m:1 occ_acs bls age_cat using `OCCDAT'
 		drop if _merge == 2
 		drop _merge
 		
@@ -49,7 +49,7 @@ preserve
 		 ftfy == 0 
 	
 	* Collapse data
-	collapse (sum) underemp, by(bls age_cat cln_educ_cat ftfy)
+	collapse (sum) underemp, by(occ_acs occ_soc bls age_cat cln_educ_cat ftfy)
 	
 	tempfile U_`var'
 	save `U_`var''
@@ -73,7 +73,7 @@ foreach x in `AGEDUMS' {
 *** MERGE TO FULL DATASET ***
 use "../intermediate/data_by_occ", clear
 
-	merge 1:1 bls age_cat cln_educ ftfy using `underemp', nogen
+	merge 1:1 occ_acs occ_soc bls age_cat cln_educ ftfy using `underemp', nogen
 
 *** CALCULATE BLS UNDEREMPLOYMENT ***
 gen underemp_bls = n_wtd
@@ -82,7 +82,7 @@ gen underemp_bls = n_wtd
 	 bls == "All occupations"
 	
 *** EXPORT DATA ***	
-order age_c cln_educ_cat bls occ educ_r* ftfy n* comp_count suff comp_wage ///
+order age_c cln_educ_cat bls occ* educ_r* ftfy n* comp_count suff comp_wage ///
  med_wage avg_wage ovl_prem underemp*
 gsort -ftfy age_cat cln_educ_cat educ_req_nbr bls
 
